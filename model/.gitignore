@@ -1,0 +1,5 @@
+# for personal use of uv env
+.python-version
+.venv
+uv.lock
+pyproject.toml
