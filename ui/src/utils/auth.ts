@@ -1,12 +1,7 @@
-// lib/auth.ts
-let loggedIn = false;
+const loggedIn = true;
 
-export const login = (username: string, password: string) => {
-  if (username === 'admin' && password === 'password') {
-    loggedIn = true;
-    return true;
-  }
-  return false;
+export const login = () => {
+  return true;
 };
 
 export const isLoggedIn = () => loggedIn;

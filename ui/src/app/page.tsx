@@ -1,40 +1,28 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { login } from '@viralytics/utils/auth';
-
+import { useRouter } from "next/navigation";
+import { login } from "@viralytics/utils/auth";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    if (login(username, password)) {
-      router.push('/dashboard');
+    if (login()) {
+      router.push("/dashboard");
     } else {
-      alert('nah, try again');
+      alert("nah, try again");
     }
   };
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-2xl mb-4">Login</h1>
-      <input
-        className="border p-2 mb-2"
-        placeholder="Username"
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        className="border p-2 mb-2"
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={handleLogin}>
-        Log In
-      </button>
+      <div className="flex flex-col items-start">
+        <h1 className="text-2xl font-bold">Sign in</h1>
+        <span className="mb-4">Use your Instagram account to continue</span>      
+        <button className="dark:bg-white text-white font-semibold bg-black dark:text-black px-4 py-2 rounded" onClick={handleLogin}>
+          Log in with Instagram
+        </button>
+      </div>
     </div>
   );
 }
