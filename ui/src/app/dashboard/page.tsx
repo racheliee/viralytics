@@ -14,8 +14,8 @@ export default function DashboardPage() {
   }, [router]);
 
   return (
-    <div>
-      <h1 className="text-xl font-bold">Welcome to your dashboard!</h1>
+    <div className='flex flex-col items-center justify-center h-screen px-8'>
+      <h1 className="text-3xl font-bold">Building!</h1>
     </div>
   );
 }
