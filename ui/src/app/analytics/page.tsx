@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { isLoggedIn } from '@viralytics/utils/auth';
+import Analytics from '@viralytics/components/Analytics/Analytics';
 
 export default function AnalyticsPage() {
   const router = useRouter();
@@ -12,10 +13,7 @@ export default function AnalyticsPage() {
       router.push('/');
     }
   }, [router]);
-
   return (
-    <div className='flex flex-col items-center justify-center h-screen px-8'>
-      <h1 className="text-3xl font-bold">Lol what insights were you looking for lmao!</h1>
-    </div>
+   <Analytics />
   );
 }
