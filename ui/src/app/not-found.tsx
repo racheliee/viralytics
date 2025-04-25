@@ -18,7 +18,7 @@ export function NotFound() {
     }, 1000);
 
     const timeout = setTimeout(() => {
-      router.push("/dashboard");
+      router.push("/analytics");
     }, 10000);
 
     return () => {
@@ -42,7 +42,7 @@ export function NotFound() {
         <span className="mt-8 mb-14 text-md font-normal text-gray-400 mx-auto md:max-w-sm">Don&apos;t worry, our team is already on it. Please try refreshing the page or come back later. <br/>You will be redirected in {secondsLeft} second{secondsLeft !== 1 ? "s" : ""}.</span>
         <button
           className="w-full px-4 font-semibold dark:bg-white bg-black max-w-50 min-h-10 rounded-lg text-white dark:text-black"
-          onClick={() => router.push("/dashboard")}
+          onClick={() => router.push("/analytics")}
         >
           Back to Dashboard
         </button>

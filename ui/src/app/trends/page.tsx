@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { isLoggedIn } from '@viralytics/utils/auth';
 
-export default function DashboardPage() {
+export default function TrendsPage() {
   const router = useRouter();
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function DashboardPage() {
 
   return (
     <div className='flex flex-col items-center justify-center h-screen px-8'>
-      <h1 className="text-3xl font-bold">Building!</h1>
+      <h1 className="text-3xl font-bold">Lol what insights were you looking for lmao!</h1>
     </div>
   );
 }

@@ -9,7 +9,7 @@ export default function LoginPage() {
 
   const handleLogin = () => {
     if (login()) {
-      router.push("/dashboard");
+      router.push("/analytics");
     } else {
       alert("nah, try again");
     }

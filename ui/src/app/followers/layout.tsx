@@ -1,9 +1,8 @@
-// app/dashboard/layout.tsx
 import Sidebar from '../../components/Sidebar';
 
 import { ReactNode } from 'react';
 
-export default function DashboardLayout({ children }: { children: ReactNode }) {
+export default function FollowersLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex">
       <Sidebar />
