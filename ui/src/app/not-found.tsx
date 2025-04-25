@@ -6,10 +6,13 @@ import { AiFillAliwangwang } from "react-icons/ai";
 
 export function NotFound() {
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
 
   const [secondsLeft, setSecondsLeft] = useState(10);
 
   useEffect(() => {
+    setMounted(true);
+
     const interval = setInterval(() => {
       setSecondsLeft((prev) => prev - 1);
     }, 1000);
@@ -24,11 +27,14 @@ export function NotFound() {
     };
   }, [router]);
 
+  if (!mounted) { // prevent ssr mismatch (hydration error)
+    return null;
+  }
 
   return (
     <div className="h-screen mx-auto grid place-items-center text-center px-8">
       <div className="flex-col flex items-center">
-        <AiFillAliwangwang className="w-20 h-20 mx-auto" />
+        <AiFillAliwangwang className="w-20 h-20 mx-auto animate-spin" />
         <span color="blue-gray" className="mt-5 text-3xl font-bold md:text-4xl">
           Error 404
         </span>
