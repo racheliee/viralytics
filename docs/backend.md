@@ -8,9 +8,10 @@ META_APP_ID=your-meta-app-id
 META_APP_SECRET=your-meta-app-secret
 META_REDIRECT_URI=https://yourdomain.com/auth/meta/callback
 META_GRAPH_API_VERSION=v19.0
+FRONTEND_URL=frontend-url
 ```
 
-`META_APP_ID` and `META_APP_SECRET` can be obtained from the [Meta for Developers](https://developers.facebook.com/) page.
+`META_APP_ID` and `META_APP_SECRET` can be obtained from the [Meta for Developers](https://developers.facebook.com/) page. Should be under the `basic settings` tab of your app.
 
 `META_REDIRECT_URI` is the URL where the user will be redirected after authentication. It should match the redirect URI set in your Meta app settings.
 
@@ -23,3 +24,4 @@ META_GRAPH_API_VERSION=v19.0
 2. add instagram tester under roles
 3. accept the tester invites under [apps and website settings on instagram](https://www.instagram.com/accounts/manage_access/)
 4. generate a new access token for the tester account
+

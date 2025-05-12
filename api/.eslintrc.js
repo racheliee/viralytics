@@ -3,24 +3,24 @@ module.exports = {
   parserOptions: {
     project: './tsconfig.json',
     tsconfigRootDir: __dirname,
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: ['@typescript-eslint/eslint-plugin', 'jest'],
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:jest/recommended',
-    'plugin:prettier/recommended',
+    'plugin:prettier/recommended'
   ],
   root: true,
   env: {
     node: true,
-    jest: true,
+    jest: true
   },
   ignorePatterns: [
     '.eslintrc.js',
     'dist',
     'local',
-    'src/scripts/generate-shared-constants.ts',
+    'src/scripts/generate-shared-constants.ts'
   ],
   rules: {
     '@typescript-eslint/interface-name-prefix': 'off',
@@ -36,8 +36,8 @@ module.exports = {
       {
         ignore: [-1, 0, 1, 2, 10, 100, 1000],
         ignoreArrayIndexes: true,
-        enforceConst: true,
-      },
+        enforceConst: true
+      }
     ],
 
     'no-restricted-imports': [
@@ -48,38 +48,38 @@ module.exports = {
             name: '@nestjs/common',
             importNames: ['InternalServerErrorException'],
             message:
-              "Please use 'InternalServerErrorExceptionWithData' instead.",
-          },
-        ],
-      },
+              "Please use 'InternalServerErrorExceptionWithData' instead."
+          }
+        ]
+      }
     ],
 
     quotes: [
       'error',
       'single',
       {
-        avoidEscape: true,
-      },
-    ],
+        avoidEscape: true
+      }
+    ]
   },
   overrides: [
     {
       files: ['src/scripts/**'],
       rules: {
-        'no-console': 'off',
-      },
+        'no-console': 'off'
+      }
     },
     {
       files: ['src/database/migrations/**'],
       rules: {
-        'require-await': 'off',
-      },
+        'require-await': 'off'
+      }
     },
     {
       files: ['**/*.spec.ts'],
       rules: {
-        'no-magic-numbers': 'off',
-      },
+        'no-magic-numbers': 'off'
+      }
     },
     {
       files: ['src/modules/internal/**'],
@@ -92,12 +92,12 @@ module.exports = {
                 name: '@nestjs/common',
                 importNames: ['InternalServerErrorException'],
                 message:
-                  "Please use 'InternalServerErrorExceptionWithData' instead.",
-              },
-            ],
-          },
-        ],
-      },
-    },
-  ],
-};
+                  "Please use 'InternalServerErrorExceptionWithData' instead."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
