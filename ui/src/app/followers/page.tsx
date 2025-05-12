@@ -1,21 +1,23 @@
-'use client';
+'use client'
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { isLoggedIn } from '@viralytics/utils/auth';
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { isLoggedIn } from '@viralytics/utils/auth'
 
 export default function FollowersPage() {
-  const router = useRouter();
+  const router = useRouter()
 
   useEffect(() => {
     if (!isLoggedIn()) {
-      router.push('/');
+      router.push('/')
     }
-  }, [router]);
+  }, [router])
 
   return (
-    <div className='flex flex-col items-center justify-center h-screen px-8'>
-      <h1 className="text-3xl font-bold">Lol what insights were you looking for lmao!</h1>
+    <div className="flex flex-col items-center justify-center h-screen px-8">
+      <h1 className="text-3xl font-bold">
+        Lol what insights were you looking for lmao!
+      </h1>
     </div>
-  );
+  )
 }

@@ -1,6 +1,6 @@
-import Sidebar from '../../components/Sidebar';
+import Sidebar from '../../components/Sidebar'
 
-import { ReactNode } from 'react';
+import { ReactNode } from 'react'
 
 export default function SettingsLayout({ children }: { children: ReactNode }) {
   return (
@@ -8,5 +8,5 @@ export default function SettingsLayout({ children }: { children: ReactNode }) {
       <Sidebar />
       <main className="flex-1 p-4">{children}</main>
     </div>
-  );
+  )
 }

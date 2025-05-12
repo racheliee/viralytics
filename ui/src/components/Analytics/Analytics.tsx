@@ -1,16 +1,16 @@
-"use client"; // if you're fetching client-side or using state/hooks here
+'use client' // if you're fetching client-side or using state/hooks here
 
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react'
 
 export default function Analytics() {
   interface AnalyticsData {
-    followers: number;
-    impressions: number;
-    engagementRate: number;
-    topPosts: { id: number; title: string; likes: number }[];
+    followers: number
+    impressions: number
+    engagementRate: number
+    topPosts: { id: number; title: string; likes: number }[]
   }
 
-  const [data, setData] = useState<AnalyticsData | null>(null);
+  const [data, setData] = useState<AnalyticsData | null>(null)
 
   // Example: Fetch data from Meta API (or mock for now)
   useEffect(() => {
@@ -21,18 +21,18 @@ export default function Analytics() {
         impressions: 78910,
         engagementRate: 4.56,
         topPosts: [
-          { id: 1, title: "Post 1", likes: 5678 },
-          { id: 2, title: "Post 2", likes: 4321 },
-          { id: 3, title: "Post 3", likes: 3210 },
-        ],
-      };
-      setData(mockData);
-    };
+          { id: 1, title: 'Post 1', likes: 5678 },
+          { id: 2, title: 'Post 2', likes: 4321 },
+          { id: 3, title: 'Post 3', likes: 3210 }
+        ]
+      }
+      setData(mockData)
+    }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
-  if (!data) return <div>Loading analytics...</div>;
+  if (!data) return <div>Loading analytics...</div>
 
   return (
     <div className="p-6">
@@ -58,11 +58,15 @@ export default function Analytics() {
       <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
         <h2 className="text-lg font-semibold mb-4">Top Performing Posts</h2>
         <ul className="space-y-2">
-          {data.topPosts.map((post: { id: number; title: string; likes: number }) => (
-            <li key={post.id}>📸 {post.title} – {post.likes} likes</li>
-          ))}
+          {data.topPosts.map(
+            (post: { id: number; title: string; likes: number }) => (
+              <li key={post.id}>
+                📸 {post.title} – {post.likes} likes
+              </li>
+            )
+          )}
         </ul>
       </div>
     </div>
-  );
+  )
 }
