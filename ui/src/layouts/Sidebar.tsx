@@ -14,7 +14,7 @@ export const Sidebar: FC<SidebarProps> = ({ visible }) => {
   const { tab } = useTab()
 
   const navItems = Object.values(TabsEnum).map((tab) => ({
-    href: `/${tab}`,
+    href: `/dashboard/${tab}`,
     name: tab
       .split('-')
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -34,7 +34,7 @@ export const Sidebar: FC<SidebarProps> = ({ visible }) => {
       <hr className="my-4 mx-2 border-gray-300" />
       <ul className="font-semibold mx-2 flex gap-2 flex-col">
         {navItems.map((item) => {
-          const isActive = tab === item.href.split('/').pop() // 👈 compare using your tab value
+          const isActive = tab === item.href.split('/').pop()
           return (
             <li key={item.href}>
               <Link

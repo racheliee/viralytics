@@ -50,7 +50,7 @@ export function NotFound() {
         </span>
         <button
           className="w-full px-4 font-semibold dark:bg-white bg-black max-w-50 min-h-10 rounded-lg text-white dark:text-black"
-          onClick={() => router.push('/analytics')}
+          onClick={() => router.push('/dashboard')}
         >
           Back to Dashboard
         </button>
