@@ -18,7 +18,7 @@ export function NotFound() {
     }, 1000)
 
     const timeout = setTimeout(() => {
-      router.push('/analytics')
+      router.push('/dashboard')
     }, 10000)
 
     return () => {

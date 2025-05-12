@@ -2,23 +2,31 @@
 
 import { AiFillAliwangwang } from 'react-icons/ai'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { FC } from 'react'
+import { useTab } from '@viralytics/hooks/useTab'
+import { TabsEnum } from '@viralytics/constants/tabs'
 
-export default function Sidebar() {
-  const pathname = usePathname()
+export interface SidebarProps {
+  readonly visible: boolean
+}
 
-  const navItems = [
-    { name: 'Analytics', href: '/analytics' },
-    { name: 'Engagement', href: '/engagement' },
-    { name: 'Predictive Tools', href: '/predictive-tools' },
-    { name: 'Schedule', href: '/schedule' },
-    { name: 'Followers', href: '/followers' },
-    { name: 'Trends', href: '/trends' },
-    { name: 'Settings', href: '/settings' }
-  ]
+export const Sidebar: FC<SidebarProps> = ({ visible }) => {
+  const { tab } = useTab()
+
+  const navItems = Object.values(TabsEnum).map((tab) => ({
+    href: `/${tab}`,
+    name: tab
+      .split('-')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ')
+  }))
 
   return (
-    <div className="w-64 h-screen bg-gray-100 dark:bg-gray-950 p-4">
+    <div
+      className={`${
+        visible ? 'flex' : 'hidden md:flex'
+      } flex-col w-64 h-screen bg-gray-100 dark:bg-gray-950 p-4`}
+    >
       <div className="flex flex-row gap-2 items-center justify-left my-4 mx-2">
         <AiFillAliwangwang className="size-10" />
         <h2 className="font-bold text-xl">Viralytics</h2>
@@ -26,7 +34,7 @@ export default function Sidebar() {
       <hr className="my-4 mx-2 border-gray-300" />
       <ul className="font-semibold mx-2 flex gap-2 flex-col">
         {navItems.map((item) => {
-          const isActive = pathname === item.href
+          const isActive = tab === item.href.split('/').pop() // 👈 compare using your tab value
           return (
             <li key={item.href}>
               <Link
