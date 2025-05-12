@@ -1,0 +1,11 @@
+# macOS system files
+.DS_Store
+
+# ide files
+.idea/
+
+# Node.js dependencies
+node_modules/
+
+# eslint
+.eslintcache
