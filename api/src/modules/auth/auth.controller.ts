@@ -1,9 +1,9 @@
 import { Controller, Get, Query, Res } from '@nestjs/common'
-import { AuthService } from 'src/auth/auth.service'
+import { AuthService } from 'src/modules/auth/auth.service'
 import { Response } from 'express'
-import { MetaCallbackRequestDto } from 'src/auth/dto/meta-auth.dto'
-import { ACCESS_TOKEN_TTL } from 'src/auth/constants/limits'
-import { DASHBOARD_URL } from 'src/auth/constants/urls'
+import { MetaCallbackRequestDto } from 'src/modules/auth/dto/meta-auth.dto'
+import { ACCESS_TOKEN_TTL } from 'src/modules/auth/constants/limits'
+import { DASHBOARD_URL } from 'src/modules/auth/constants/urls'
 import { ConfigService } from '@nestjs/config'
 
 @Controller('auth')
