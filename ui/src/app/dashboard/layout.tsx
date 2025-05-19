@@ -1,7 +1,7 @@
 'use client'
 
 import { PropsWithChildren } from 'react'
-import { Sidebar } from '@viralytics/layouts/Sidebar'
+import { Sidebar } from '@viralytics/components/Sidebar'
 
 export default function DashboardLayout({ children }: PropsWithChildren) {
   return (

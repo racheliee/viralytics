@@ -1,5 +1,6 @@
 'use client' // if you're fetching client-side or using state/hooks here
 
+import DashboardWrapper from '@viralytics/components/DashboardWrapper'
 import { useState, useEffect } from 'react'
 
 export default function Analytics() {
@@ -35,8 +36,7 @@ export default function Analytics() {
   if (!data) return <div>Loading analytics...</div>
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold mb-4">Instagram Analytics</h1>
+    <DashboardWrapper title="Instagram Analytics">
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
@@ -67,6 +67,8 @@ export default function Analytics() {
           )}
         </ul>
       </div>
-    </div>
+      
+
+    </DashboardWrapper>
   )
 }

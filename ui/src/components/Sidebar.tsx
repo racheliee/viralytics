@@ -3,8 +3,8 @@
 import { AiFillAliwangwang } from 'react-icons/ai'
 import Link from 'next/link'
 import { FC } from 'react'
-import { useTab } from '@viralytics/hooks/useTab'
-import { TabsEnum } from '@viralytics/constants/tabs'
+import { useTab } from '../hooks/useTab'
+import { TabsEnum } from '../constants/tabs'
 
 export interface SidebarProps {
   readonly visible: boolean
