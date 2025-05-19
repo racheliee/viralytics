@@ -1,0 +1,4 @@
+ Usage: python script.py A.jpg B.jpg C.jpg
+ Output: "ViTR_results.log"
+
+TODO: refine which reason to use
