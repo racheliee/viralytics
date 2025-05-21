@@ -1,0 +1,7 @@
+2025-05-19 16:48:00,159 [INFO] Loading pretrained weights from Hugging Face hub (timm/vit_base_patch16_224.augreg2_in21k_ft_in1k)
+2025-05-19 16:48:00,389 [INFO] [timm/vit_base_patch16_224.augreg2_in21k_ft_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2025-05-19 16:48:00,416 [INFO] Missing keys (fc_norm.weight, fc_norm.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
+2025-05-19 16:48:00,416 [WARNING] Unexpected keys (norm.bias, norm.weight) found while loading pretrained weights. This may be expected if model is being adapted.
+2025-05-19 16:48:05,788 [INFO] Winner: A
+2025-05-19 16:48:05,789 [INFO] A reasons: ['face detected=True', 'smile=True', 'makeup=True', 'eyes open=False', 'symmetry=False', 'age=33', "gender={'Woman': 5.064968764781952, 'Man': 94.93502378463745}", 'pose=unknown', 'brightness=95.7', 'contrast=57.2', 'sharpness=56.1', 'composition_rule_of_thirds=False', 'background_clutter=False', 'style=none', 'props=[]', 'lighting=natural', 'attention_heatmap_computed']
+2025-05-19 16:48:05,789 [INFO] B reasons: ['face detected=True', 'smile=True', 'makeup=False', 'eyes open=True', 'symmetry=False', 'age=36', "gender={'Woman': 10.735185444355011, 'Man': 89.26481008529663}", 'pose=frontal', 'brightness=188.0', 'contrast=51.7', 'sharpness=99.9', 'composition_rule_of_thirds=True', 'background_clutter=False', 'style=none', 'props=[]', 'lighting=natural', 'attention_heatmap_computed']
