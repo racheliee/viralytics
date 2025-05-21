@@ -2,3 +2,5 @@
  Output: "ViTR_results.log"
 
 TODO: refine which reason to use
+
+"vit_regressor.pth" is too big. So maybe have to run the ViT first.
