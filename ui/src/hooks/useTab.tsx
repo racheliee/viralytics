@@ -1,7 +1,7 @@
 'use client'
 
 import { TabsEnum } from '@viralytics/constants/tabs'
-import { usePathname } from 'next/navigation' 
+import { usePathname } from 'next/navigation'
 
 export const useTab = () => {
   const pathname = usePathname()

@@ -13,3 +13,20 @@
 - [Frontend Documentation](docs/frontend.md)
 
 ## Getting Started
+```
+# running the backend (port 3001)
+cd api
+yarn start:dev
+
+# running the frontend (port 3000)
+cd ui
+yarn run dev
+```
+
+## Formatting
+To format the code, run in the respective directories:
+```
+yarn prettier:fix
+```
+
+

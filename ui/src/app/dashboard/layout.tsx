@@ -5,11 +5,9 @@ import { Sidebar } from '@viralytics/components/Sidebar'
 
 export default function DashboardLayout({ children }: PropsWithChildren) {
   return (
-    <div className="flex min-h-screen">
+    <div className="flex h-screen overflow-hidden">
       <Sidebar visible={true} />
-      <main className="flex-1 overflow-y-auto p-4">
-        {children}
-      </main>
+      <main className="flex-1 overflow-y-auto p-4">{children}</main>
     </div>
   )
 }
