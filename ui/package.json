@@ -17,6 +17,7 @@
     "@mui/material": "^7.1.0",
     "@mui/system": "^7.1.0",
     "@types/react-icons": "^3.0.0",
+    "multer": "^2.0.0",
     "next": "15.3.1",
     "next-link": "^2.0.0",
     "next-themes": "^0.4.6",
