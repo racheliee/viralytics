@@ -1,5 +1,6 @@
-import Analytics from '@viralytics/components/Analytics/Analytics'
 
-export default function AnalyticsPage() {
-  return <Analytics />
+import Followers from '@viralytics/components/Followers/Followers'
+
+export default function FollowersPage() {
+  return <Followers />
 }

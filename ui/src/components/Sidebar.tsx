@@ -25,7 +25,7 @@ export const Sidebar: FC<SidebarProps> = ({ visible }) => {
     <div
       className={`${
         visible ? 'flex' : 'hidden md:flex'
-      } flex-col w-64 h-screen bg-gray-100 dark:bg-gray-950 p-4`}
+      } flex-col w-64 h-screen bg-gray-100 dark:bg-gray-950 dark:text-white p-4`}
     >
       <div className="flex flex-row gap-2 items-center justify-left my-4 mx-2">
         <AiFillAliwangwang className="size-10" />

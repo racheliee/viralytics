@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Inter } from 'next/font/google'
 import '@viralytics/styles/globals.css'
+import React from 'react'
+import { ThemeProviders } from '@viralytics/components/Theme/ThemeProviders'
+import { cookies } from 'next/headers'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -25,17 +28,30 @@ export const metadata: Metadata = {
   }
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
+  // Read theme cookie on server
+  const cookieStore = await cookies()
+  const themeCookie = cookieStore.get('theme')?.value
+  const initialTheme = themeCookie === 'dark' ? 'dark' : 'light'
+  const initialCookiePresent = themeCookie !== undefined
+
   return (
-    <html lang="en">
+    <html lang="en" data-theme={initialTheme}>
       <body
         className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+          <ThemeProviders
+            initialTheme={initialTheme}
+            initialThemeCookiePresent={initialCookiePresent}
+          >
+            {children}
+          </ThemeProviders>
+        </div>
       </body>
     </html>
   )
