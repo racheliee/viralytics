@@ -1,7 +1,19 @@
 'use client'
 
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { createContext, useContext, useState, useEffect, useMemo } from 'react'
 import { ThemeProvider as MuiProvider, createTheme } from '@mui/material/styles'
+
+interface ThemeContextType {
+  mode: 'light' | 'dark'
+  setMode: React.Dispatch<React.SetStateAction<'light' | 'dark'>>
+}
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
+
+export function useThemeContext(): ThemeContextType {
+  const ctx = useContext(ThemeContext)
+  if (!ctx) throw new Error('useThemeContext must be used within ThemeProviders')
+  return ctx
+}
 
 export function ThemeProviders({
   children,
@@ -12,10 +24,8 @@ export function ThemeProviders({
   initialTheme: 'light' | 'dark'
   initialThemeCookiePresent: boolean
 }) {
-  // Initialize from server
   const [mode, setMode] = useState<'light' | 'dark'>(initialTheme)
 
-  // On mount, if no cookie, use system preference
   useEffect(() => {
     if (!initialThemeCookiePresent) {
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -23,13 +33,11 @@ export function ThemeProviders({
     }
   }, [initialThemeCookiePresent])
 
-  // Sync HTML attribute and cookie
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', mode)
     document.cookie = `theme=${mode};path=/;max-age=${60 * 60 * 24 * 365}`
   }, [mode])
 
-  // Create MUI theme
   const muiTheme = useMemo(
     () =>
       createTheme({
@@ -45,5 +53,9 @@ export function ThemeProviders({
     [mode]
   )
 
-  return <MuiProvider theme={muiTheme}>{children}</MuiProvider>
+  return (
+    <ThemeContext.Provider value={{ mode, setMode }}>
+      <MuiProvider theme={muiTheme}>{children}</MuiProvider>
+    </ThemeContext.Provider>
+  )
 }
