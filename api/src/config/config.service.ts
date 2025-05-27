@@ -10,8 +10,24 @@ export class ConfigService {
     return process.env.META_APP_SECRET!
   }
 
-  get metaRedirectUri(): string {
-    return process.env.META_REDIRECT_URI!
+  get instagramAppId(): string {
+    return process.env.INSTAGRAM_APP_ID!
+  }
+
+  get instagramAppSecret(): string {
+    return process.env.INSTAGRAM_APP_SECRET!
+  }
+
+  get facebookRedirectUri(): string {
+    return process.env.FACEBOOK_REDIRECT_URI!
+  }
+
+  get instagramRedirectUri(): string {
+    return process.env.INSTAGRAM_REDIRECT_URI!
+  }
+
+  get instagramEmbedUrl(): string {
+    return process.env.INSTAGRAM_EMBED_URL!
   }
 
   get metaGraphApiVersion(): string {

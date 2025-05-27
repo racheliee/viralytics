@@ -25,3 +25,16 @@ FRONTEND_URL=frontend-url
 3. accept the tester invites under [apps and website settings on instagram](https://www.instagram.com/accounts/manage_access/)
 4. generate a new access token for the tester account
 
+## Callback URL
+The callback URL needs to be added to your Meta app settings under the OAuth redirect URIs section and the Instagram App settings. (**BOTH** need the URLs to be set)
+
+While facebook login automatically supports localhost callbacks, Instagram login does not. Hence, you need to use a service like [ngrok](https://ngrok.com/) to expose your local server to the internet for testing purposes.
+
+```bash
+ngrok http 3002 # since backend runs on port 3002
+```
+
+Copy the generated ngrok URL and use it in your `.env` file and add to your Meta app settings as the redirect URI.
+```bash
+INSTAGRAM_REDIRECT_URI={ngrok-url}/auth/instagram-callback
+```
