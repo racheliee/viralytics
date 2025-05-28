@@ -3,4 +3,8 @@
 
 TODO: refine which reason to use
 
-"vit_regressor.pth" is too big. So maybe have to run the ViT first.
+"vit_regressor.pth" is too big.
+
+1. Unzip the 'static.zip'
+2. Run ViT.py. By this you will get 'vit_regressor.pth'
+3. Run ViTR.py and will output "ViTR_results.log"
