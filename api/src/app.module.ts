@@ -3,6 +3,9 @@ import { AppService } from './app.service'
 import { AuthModule } from './modules/auth/auth.module'
 import { ConfigModule } from '@nestjs/config'
 import { ConfigService } from './config/config.service';
+import { InstagramService } from './modules/instagram/instagram.service';
+import { InstagramController } from './modules/instagram/instagram.controller';
+import { InstagramModule } from './modules/instagram/instagram.module';
 
 @Module({
   imports: [
@@ -15,9 +18,10 @@ import { ConfigService } from './config/config.service';
         `.env`
       ]
     }),
-    AuthModule
+    AuthModule,
+    InstagramModule
   ],
-  controllers: [],
-  providers: [AppService, ConfigService]
+  controllers: [InstagramController],
+  providers: [AppService, ConfigService, InstagramService]
 })
 export class AppModule {}

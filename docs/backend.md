@@ -38,3 +38,16 @@ Copy the generated ngrok URL and use it in your `.env` file and add to your Meta
 ```bash
 INSTAGRAM_REDIRECT_URI={ngrok-url}/auth/instagram-callback
 ```
+
+
+## APIs
+
+### Authentication
+- `/auth/facebook-login` - Initiates the Facebook login process.
+- `/auth/facebook-callback` - Handles the callback from Facebook after login.
+- `auth/instagram-login` - Initiates the Instagram login process.
+- `/auth/instagram-callback` - Handles the callback from Instagram after login.
+
+### Instagram APIs
+- `/instagram/demographics/followers` - Fetches the demographics of the followers of the authenticated Instagram account.
+- `/instagram/demographics/engaged-audience` - Fetches the demographics of the engaged audience of the authenticated Instagram account.

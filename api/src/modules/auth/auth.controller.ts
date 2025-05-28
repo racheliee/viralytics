@@ -13,10 +13,10 @@ import { ACCESS_TOKEN_TTL } from 'src/modules/auth/constants/limits'
 import { DASHBOARD_URL } from 'src/modules/auth/constants/urls'
 import { ConfigService } from '@nestjs/config'
 
-@Controller('auth')
+@Controller('api/auth')
 export class AuthController {
   private readonly logger = new Logger(AuthController.name)
-  
+
   constructor(
     private readonly authService: AuthService,
     private readonly configService: ConfigService
@@ -45,7 +45,7 @@ export class AuthController {
     }
 
     res.cookie('ig_token', accessToken, cookieOpts)
-    // res.cookie('ig_account_id', accountId, cookieOpts)
+    // res.cookie('ig_user_id', accountId, cookieOpts)
 
     const frontendUrl = this.configService.getOrThrow('FRONTEND_URL')
     return res.redirect(`${frontendUrl}/${DASHBOARD_URL}`)
@@ -53,7 +53,8 @@ export class AuthController {
 
   @Get('instagram-login')
   loginInstagram(@Res() res: Response) {
-    return res.redirect(this.authService.getInstagramRedirectUrl())
+    const redirectUrl = this.authService.getInstagramRedirectUrl()
+    return res.redirect(302, redirectUrl)
   }
 
   @Get('instagram-callback')
@@ -77,7 +78,7 @@ export class AuthController {
     const cookieOpts = {
       httpOnly: true,
       secure: isProd,
-      sameSite: 'strict' as const,
+      sameSite: isProd ? ('strict' as 'strict') : ('lax' as 'lax'),
       path: '/',
       maxAge: ACCESS_TOKEN_TTL
     }
