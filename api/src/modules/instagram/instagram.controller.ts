@@ -10,7 +10,7 @@ import {
 } from 'src/modules/instagram/constants/enums'
 import { ReqWithInstagram } from 'src/modules/auth/decorator/instagram-auth-decorator'
 
-@Controller('api/instagram')
+@Controller('instagram')
 @UseGuards(InstagramCookieGuard)
 export class InstagramController {
   constructor(private readonly instagramService: InstagramService) {}

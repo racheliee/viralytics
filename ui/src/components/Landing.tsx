@@ -4,11 +4,12 @@ import { FaFacebook, FaInstagram } from 'react-icons/fa'
 export default function Landing() {
   const handleFacebookLogin = () => {
     window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/facebook-login`
+    // window.location.href = '/api/auth/facebook-login'
   }
 
   const handleInstagramLogin = () => {
-    // window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/instagram-login`
-    window.location.href = '/auth/instagram-login'
+    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/instagram-login`
+    // window.location.href = '/api/auth/instagram-login'
   }
 
   return (

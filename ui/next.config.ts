@@ -7,7 +7,7 @@ const nextConfig = {
         destination: `${process.env.NEXT_PUBLIC_API_URL}/:path*`,
       },
       {
-        source: '/auth/:path*',
+        source: '/api/auth/:path*',
         destination: `${process.env.NEXT_PUBLIC_API_URL}/auth/:path*`,
       },
     ]

@@ -13,7 +13,7 @@ import { ACCESS_TOKEN_TTL } from 'src/modules/auth/constants/limits'
 import { DASHBOARD_URL } from 'src/modules/auth/constants/urls'
 import { ConfigService } from '@nestjs/config'
 
-@Controller('api/auth')
+@Controller('auth')
 export class AuthController {
   private readonly logger = new Logger(AuthController.name)
 
