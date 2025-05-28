@@ -1,8 +1,14 @@
 import { AiFillAliwangwang } from 'react-icons/ai'
+import { FaFacebook, FaInstagram } from 'react-icons/fa'
 
 export default function Landing() {
-  const handleLogin = () => {
-    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/meta-login`
+  const handleFacebookLogin = () => {
+    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/facebook-login`
+  }
+
+  const handleInstagramLogin = () => {
+    // window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/auth/instagram-login`
+    window.location.href = '/auth/instagram-login'
   }
 
   return (
@@ -12,12 +18,20 @@ export default function Landing() {
           <AiFillAliwangwang className="size-8" />
           <h1 className="text-xl font-bold">Viralytics</h1>
         </div>
-        <div>
+        <div className="flex items-center gap-2">
+          <span className="font-semibold">Login with</span>
           <button
-            onClick={handleLogin}
-            className="font-semibold cursor-pointer "
+            onClick={handleInstagramLogin}
+            className="font-semibold cursor-pointer"
           >
-            Login
+            <FaInstagram />
+          </button>
+          <span className="font-semibold">or</span>
+          <button
+            onClick={handleFacebookLogin}
+            className="font-semibold cursor-pointer"
+          >
+            <FaFacebook />
           </button>
         </div>
       </header>
@@ -28,9 +42,19 @@ export default function Landing() {
             <h1 className="text-2xl font-bold">Viralytics</h1>
             <span className="mb-2">Where data meets virality</span>
             <button
-              className="dark:bg-white text-white font-semibold bg-black dark:text-black px-4 py-2 rounded cursor-pointer"
-              onClick={handleLogin}
+              type="button"
+              className="dark:bg-white text-white font-semibold bg-black dark:text-black px-4 py-2 rounded cursor-pointer flex flex-row items-center justify-center gap-2"
+              onClick={handleFacebookLogin}
             >
+              <FaFacebook />
+              Log in with Facebook
+            </button>
+            <button
+              type="button"
+              className="my-3 dark:bg-white text-white font-semibold bg-black dark:text-black px-4 py-2 rounded cursor-pointer flex flex-row items-center justify-center gap-2"
+              onClick={handleInstagramLogin}
+            >
+              <FaInstagram />
               Log in with Instagram
             </button>
           </div>
