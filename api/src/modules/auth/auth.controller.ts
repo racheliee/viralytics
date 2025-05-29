@@ -86,8 +86,16 @@ export class AuthController {
     res.cookie('ig_token', longToken, cookieOpts)
     res.cookie('ig_user_id', profile.id, cookieOpts)
 
-    return res.redirect(
-      `${this.configService.getOrThrow('FRONTEND_URL')}/${DASHBOARD_URL}`
-    )
+    const frontendUrl = this.configService.getOrThrow('FRONTEND_URL')
+    
+    // In local environment, add token and user ID as URL parameters
+    if (!isProd) {
+      return res.redirect(
+        `${frontendUrl}/${DASHBOARD_URL}?ig_token=${encodeURIComponent(longToken)}&ig_user_id=${encodeURIComponent(profile.id)}`
+      )
+    }
+    
+    // In production, just redirect normally as cookies will work
+    return res.redirect(`${frontendUrl}/${DASHBOARD_URL}`)
   }
 }
