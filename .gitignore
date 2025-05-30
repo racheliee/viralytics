@@ -13,5 +13,10 @@ node_modules/
 # build output
 dist/
 
-# yarn
-.yarn/
+# Ignore most of .yarn
+.yarn/*
+# Except these:
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/patches
