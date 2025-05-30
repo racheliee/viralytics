@@ -38,6 +38,12 @@ yarn workspace @viralytics/api prettier:fix
 ```
 
 ## Misc
+### Adding new enums
+After adding a new enum, run the following command to update the TypeScript types:
+```bash
+yarn workspace @viralytics/shared-constants build 
+```
+
 ### Unnecessary Dependencies
 Go to each workspace and run:
 ```bash
