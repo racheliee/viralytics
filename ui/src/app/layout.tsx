@@ -35,7 +35,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const initialCookiePresent = themeCookie !== undefined
 
   return (
-    <html lang="en" data-theme={initialTheme}>
+    <html lang="en">
       <body className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
           <ThemeProviders
