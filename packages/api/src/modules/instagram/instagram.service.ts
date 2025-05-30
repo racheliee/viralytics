@@ -11,7 +11,7 @@ import {
   MetricEnum,
   MetricTypeEnum,
   PeriodEnum
-} from 'src/modules/instagram/constants/enums'
+} from '@viralytics/shared-constants'
 import {
   DemographicsRequestDto,
   DemographicsResponseDto

@@ -9,24 +9,23 @@
 - `docs/`: Contains the documentation
 
 ## For more details
-- [Backend Documentation](docs/backend.md)
-- [Frontend Documentation](docs/frontend.md)
+- [Backend Documentation](packages/api/README.md)
+- [Frontend Documentation](packages/ui/README.md)
 
 ## Getting Started
 ```
 # running the backend (port 3001)
-cd api
-yarn start:dev
+yarn workspace @viralytics/api dev
 
 # running the frontend (port 3000)
-cd ui
-yarn run dev
+yarn workspace @viralytics/ui dev   
 ```
 
 ## Formatting
 To format the code, run in the respective directories:
 ```
-yarn prettier:fix
+yarn workspace @viralytics/api prettier:fix
+yarn workspace @viralytics/ui prettier:fix
 ```
 
 

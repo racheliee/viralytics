@@ -1,5 +1,8 @@
 import { IsArray, IsOptional, IsString } from 'class-validator'
-import { DemographicBreakdownEnum, TimeframeEnum } from 'src/modules/instagram/constants/enums'
+import {
+  DemographicBreakdownEnum,
+  TimeframeEnum
+} from '@viralytics/shared-constants'
 import { InstagramBreakdownResults } from 'src/modules/instagram/instagram.service'
 
 export class DemographicsRequestDto {

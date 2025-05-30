@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@viralytics/*": ["./src/*"]
+      "@viralytics/*": ["./src/*"],
+      "@viralytics/shared-constants": ["../shared-constants/dist"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

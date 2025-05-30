@@ -1,0 +1,12 @@
+{
+  "name": "viralytics",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/racheliee/viralytics",
+  "author": "racheliee <rachelie.dwg@gmail.com>",
+  "license": "MIT"
+}

@@ -1,9 +1,9 @@
 {
-  "name": "ui",
+  "name": "@viralytics/ui",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -39,5 +39,6 @@
     "prettier": "^3.5.3",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
-  }
+  },
+  "@viralytics/shared-constants": "*"
 }

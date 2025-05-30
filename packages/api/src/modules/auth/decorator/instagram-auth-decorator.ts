@@ -5,7 +5,7 @@ export const ReqWithInstagram = createParamDecorator(
     const req = ctx.switchToHttp().getRequest()
     return {
       token: req.igToken,
-      userId: req.igUserId,
+      userId: req.igUserId
     }
-  },
+  }
 )

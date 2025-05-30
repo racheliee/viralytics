@@ -1,73 +1,53 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Backend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+The backend is running on Port 3002
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ yarn install
+## Environment Variables
+```.env
+META_APP_ID=your-meta-app-id
+META_APP_SECRET=your-meta-app-secret
+META_REDIRECT_URI=https://yourdomain.com/auth/meta/callback
+META_GRAPH_API_VERSION=v19.0
+FRONTEND_URL=frontend-url
 ```
 
-## Running the app
+`META_APP_ID` and `META_APP_SECRET` can be obtained from the [Meta for Developers](https://developers.facebook.com/) page. Should be under the `basic settings` tab of your app.
+
+`META_REDIRECT_URI` is the URL where the user will be redirected after authentication. It should match the redirect URI set in your Meta app settings.
+
+- Local should be `http://localhost:3002/auth/meta-callback`
+- Production should be `https://yourdomain.com/auth/meta-callback`
+
+## Setting up Meta App
+1. create a new app on [Meta for Developers](https://developers.facebook.com/)
+   1. make it a business app & select 'other' for the app type. set the app up for instagram
+2. add instagram tester under roles
+3. accept the tester invites under [apps and website settings on instagram](https://www.instagram.com/accounts/manage_access/)
+4. generate a new access token for the tester account
+
+## Callback URL
+The callback URL needs to be added to your Meta app settings under the OAuth redirect URIs section and the Instagram App settings. (**BOTH** need the URLs to be set)
+
+While facebook login automatically supports localhost callbacks, Instagram login does not. Hence, you need to use a service like [ngrok](https://ngrok.com/) to expose your local server to the internet for testing purposes.
 
 ```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+ngrok http 3002 # since backend runs on port 3002
 ```
 
-## Test
-
+Copy the generated ngrok URL and use it in your `.env` file and add to your Meta app settings as the redirect URI.
 ```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+INSTAGRAM_REDIRECT_URI={ngrok-url}/auth/instagram-callback
 ```
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## APIs
 
-## Stay in touch
+### Authentication
+- `/auth/facebook-login` - Initiates the Facebook login process.
+- `/auth/facebook-callback` - Handles the callback from Facebook after login.
+- `auth/instagram-login` - Initiates the Instagram login process.
+- `/auth/instagram-callback` - Handles the callback from Instagram after login.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+### Instagram APIs
+- `/instagram/demographics/followers` - Fetches the demographics of the followers of the authenticated Instagram account.
+- `/instagram/demographics/engaged-audience` - Fetches the demographics of the engaged audience of the authenticated Instagram account.

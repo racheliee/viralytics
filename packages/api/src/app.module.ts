@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common'
 import { AppService } from './app.service'
 import { AuthModule } from './modules/auth/auth.module'
 import { ConfigModule } from '@nestjs/config'
-import { ConfigService } from './config/config.service';
-import { InstagramService } from './modules/instagram/instagram.service';
-import { InstagramController } from './modules/instagram/instagram.controller';
-import { InstagramModule } from './modules/instagram/instagram.module';
+import { ConfigService } from './config/config.service'
+import { InstagramService } from './modules/instagram/instagram.service'
+import { InstagramController } from './modules/instagram/instagram.controller'
+import { InstagramModule } from './modules/instagram/instagram.module'
 
 @Module({
   imports: [
