@@ -1,6 +1,7 @@
 export enum MetricEnum {
   FOLLOWER_DEMOGRAPHICS = 'follower_demographics',
-  ENGAGED_AUDIENCE_DEMOGRAPHICS = 'engaged_audience_demographics'
+  ENGAGED_AUDIENCE_DEMOGRAPHICS = 'engaged_audience_demographics',
+  FOLLOWS_AND_UNFOLLOWS = 'follows_and_unfollows'
 }
 
 export enum PeriodEnum {
@@ -9,7 +10,7 @@ export enum PeriodEnum {
 }
 
 export enum MetricTypeEnum {
-  TOTAL_VALUE = 'total_value'
+  TOTAL_VALUE = 'total_value',
 }
 
 export enum DemographicBreakdownEnum {
@@ -24,4 +25,10 @@ export enum TimeframeEnum {
   LAST_90_DAYS = 'last_90_days',
   PREV_MONTH = 'prev_month',
   THIS_MONTH = 'this_month'
+}
+
+export enum GeneralBreakdownEnum {
+  FOLLOW_TYPE = "follow_type",
+  MEDIA_PRODUCT_TYPE = "media_product_type",
+  CONTACT_BUTTON_TYPE = "contact_button_type",
 }

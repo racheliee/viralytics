@@ -110,7 +110,10 @@ export default function DemographicsPie({
                   data.dimension_key.slice(1)}
               </CardTitle>
               <CardDescription>
-                Gender of your followers (F = female, M = male, U = unknown)
+                {data.dimension_key.charAt(0).toUpperCase() +
+                  data.dimension_key.slice(1)}{' '}
+                breakdown for the last{' '}
+                {timeframeLabels[selectedTimeframe] || '30 days'}
               </CardDescription>
             </CardHeader>
             <div className="pt-4">
