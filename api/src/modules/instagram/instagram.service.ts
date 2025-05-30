@@ -41,7 +41,9 @@ export class InstagramService {
     metric: MetricEnum,
     { breakdown, timeframe }: DemographicsRequestDto
   ): Promise<DemographicsResponseDto> {
-    this.logger.log(`Fetching demographics with metric: ${metric}, breakdown: ${breakdown}, timeframe: ${timeframe}`)
+    this.logger.log(
+      `Fetching demographics with metric: ${metric}, breakdown: ${breakdown}, timeframe: ${timeframe}`
+    )
     const { data } = await this.igApi.get(`/${userId}/insights`, {
       params: {
         metric,
@@ -61,6 +63,8 @@ export class InstagramService {
         keyLabel: r.dimension_values.join(', '),
         value: r.value
       })) || []
+
+    console.log('Demographics results:', results)
 
     return new DemographicsResponseDto(breakdown, results)
   }

@@ -11,7 +11,6 @@ export class InstagramCookieGuard implements CanActivate {
     const req = ctx.switchToHttp().getRequest()
     const token = req.cookies['ig_token']
     const id = req.cookies['ig_user_id']
-    console.log('InstagramCookieGuard:', { token, id })
     if (!token || !id) {
       throw new UnauthorizedException('Instagram login required')
     }
