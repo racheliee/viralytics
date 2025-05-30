@@ -13,14 +13,14 @@
 - [Frontend Documentation](packages/ui/README.md)
 
 ## Getting Started
-```
+```bash
 # Install dependencies for all workspaces
 rm -rf node_modules yarn.lock # if you have issues with dependencies
 yarn install
 ```
 
 ## Running the Project
-```
+```bash
 # running the backend (port 3001)
 yarn dev:api
 
@@ -30,7 +30,7 @@ yarn dev:ui
 
 ## Formatting
 To format the code, run in the respective directories:
-```
+```bash
 yarn prettier: fix
 
 # for each workspace (replace /api with each workspace name)
@@ -40,7 +40,7 @@ yarn workspace @viralytics/api prettier:fix
 ## Misc
 ### Unnecessary Dependencies
 Go to each workspace and run:
-```
+```bash
 depcheck
 yarn remove <unnecessary-package>
 
