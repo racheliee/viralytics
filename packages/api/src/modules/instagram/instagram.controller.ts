@@ -1,10 +1,7 @@
 import {
   Body,
   Controller,
-  Get,
   Post,
-  Query,
-  Req,
   UseGuards
 } from '@nestjs/common'
 import { InstagramService } from './instagram.service'
@@ -35,7 +32,7 @@ export class InstagramController {
     )
   }
 
-  @Get('demographics/engaged-audience')
+  @Post('demographics/engaged-audience')
   async getEngagedAudienceDemographics(
     @ReqWithInstagram() req: { token: string; userId: string },
     @Body() body: DemographicsRequestDto

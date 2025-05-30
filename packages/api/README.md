@@ -54,5 +54,5 @@ INSTAGRAM_REDIRECT_URI={ngrok-url}/auth/instagram-callback
 
 ### Instagram APIs
 
-- `/instagram/demographics/followers` - Fetches the demographics of the followers of the authenticated Instagram account.
-- `/instagram/demographics/engaged-audience` - Fetches the demographics of the engaged audience of the authenticated Instagram account.
+- `POST /instagram/demographics/followers` - Fetches the demographics of the followers of the authenticated Instagram account.
+- `POST /instagram/demographics/engaged-audience` - Fetches the demographics of the engaged audience of the authenticated Instagram account.

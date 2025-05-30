@@ -1,23 +1,28 @@
 'use client'
 
 import React from 'react'
-// import FollowerStats from '@viralytics/components/Followers/FollowerStats'
-// import { FollowerTrends } from '@viralytics/components/Followers/FollowerTrends'
-// import { ActivityHeatmap } from '@viralytics/components/Followers/ActivityHeatmap'
-// import { FollowRelationships } from '@viralytics/components/Followers/FollowRelationships'
 import DashboardWrapper from '@viralytics/components/DashboardWrapper'
-import FollowerDemographics from '@viralytics/components/Followers/FollowerDemographics'
+import DemographicsBar from '@viralytics/components/Charts/DemographicsBar'
+import { DemographicBreakdownEnum } from '@viralytics/shared-constants'
+import DemographicsPie from '@viralytics/components/Charts/DemographicsPie'
 
 export default function Followers() {
   return (
-    <DashboardWrapper title="Followers Insights">
-      <FollowerDemographics />
-      <div className="flex flex-row items-center justify-between gap-4">
-        {/* <FollowerStats />
-        <FollowerTrends /> */}
+    <DashboardWrapper title="Followers Insights" className="gap-12">
+      <div className="flex flex-row items-center justify-between gap-6">
+        <DemographicsBar
+          type="followers"
+          breakdown={DemographicBreakdownEnum.AGE}
+        />
+        <DemographicsPie
+          type="followers"
+          breakdown={DemographicBreakdownEnum.GENDER}
+        />
       </div>
-      {/* <ActivityHeatmap />
-      <FollowRelationships /> */}
+      <DemographicsBar
+        type="followers"
+        breakdown={DemographicBreakdownEnum.COUNTRY}
+      />
     </DashboardWrapper>
   )
 }
