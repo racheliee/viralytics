@@ -1,8 +1,6 @@
 'use client'
-
-import IconButton from '@mui/material/IconButton'
-import LightModeIcon from '@mui/icons-material/LightMode'
-import DarkModeIcon from '@mui/icons-material/DarkMode'
+import { MdLightMode } from 'react-icons/md'
+import { MdNightlight } from 'react-icons/md'
 import React from 'react'
 import { useThemeContext } from '@viralytics/components/Theme/ThemeProviders'
 
@@ -14,8 +12,8 @@ export function ThemeToggle() {
   }
 
   return (
-    <IconButton onClick={toggle}>
-      {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
-    </IconButton>
+    <button onClick={toggle}>
+      {mode === 'dark' ? <MdLightMode /> : <MdNightlight />}
+    </button>
   )
 }
