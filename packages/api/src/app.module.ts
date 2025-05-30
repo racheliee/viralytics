@@ -21,7 +21,7 @@ import { InstagramModule } from './modules/instagram/instagram.module'
     AuthModule,
     InstagramModule
   ],
-  controllers: [InstagramController],
+  controllers: [],
   providers: [AppService, ConfigService, InstagramService]
 })
 export class AppModule {}

@@ -1,7 +1,7 @@
 interface DashboardWrapperProps {
   title: string
   children: React.ReactNode
-  className?: string  
+  className?: string
 }
 
 export default function DashboardWrapper({

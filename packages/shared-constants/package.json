@@ -12,6 +12,7 @@
     }
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json",
+    "prettier:fix": "prettier --write \"**/*.{ts,tsx,js,jsx,json,yml,yaml,md}\""
   }
 }

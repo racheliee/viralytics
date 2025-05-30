@@ -28,7 +28,11 @@ export const metadata: Metadata = {
   }
 }
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+  children
+}: {
+  children: React.ReactNode
+}) {
   const cookieStore = await cookies()
   const themeCookie = cookieStore.get('theme')?.value
   const initialTheme = themeCookie === 'dark' ? 'dark' : 'light'
@@ -36,7 +40,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
           <ThemeProviders
             initialTheme={initialTheme}

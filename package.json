@@ -8,5 +8,15 @@
   "main": "index.js",
   "repository": "https://github.com/racheliee/viralytics",
   "author": "racheliee <rachelie.dwg@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn workspace @viralytics/shared-constants build && yarn workspace @viralytics/api build && yarn workspace @viralytics/ui build",
+    "dev:api": "yarn workspace @viralytics/api dev",
+    "dev:ui": "yarn workspace @viralytics/ui dev",
+    "prettier:fix": "yarn workspace @viralytics/api prettier:fix && yarn workspace @viralytics/ui prettier:fix && yarn workspace @viralytics/shared-constants prettier:fix"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  },
+  "packageManager": "yarn@4.9.1"
 }

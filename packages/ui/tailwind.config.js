@@ -1,4 +1,4 @@
-import tailwindcssAnimate from "tailwindcss-animate";
+import tailwindcssAnimate from 'tailwindcss-animate'
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -6,7 +6,7 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx}',
     './src/hooks/**/*.{js,ts,jsx,tsx}',
     './src/utils/**/*.{js,ts,jsx,tsx}',
-    './src/styles/globals.css',
+    './src/styles/globals.css'
   ],
   darkMode: ['class', '[data-theme="dark"]'],
 
@@ -47,11 +47,11 @@ module.exports = {
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         chart: {
-          '1': 'hsl(var(--chart-1))',
-          '2': 'hsl(var(--chart-2))',
-          '3': 'hsl(var(--chart-3))',
-          '4': 'hsl(var(--chart-4))',
-          '5': 'hsl(var(--chart-5))'
+          1: 'hsl(var(--chart-1))',
+          2: 'hsl(var(--chart-2))',
+          3: 'hsl(var(--chart-3))',
+          4: 'hsl(var(--chart-4))',
+          5: 'hsl(var(--chart-5))'
         }
       },
       borderRadius: {
@@ -60,7 +60,6 @@ module.exports = {
         sm: 'calc(var(--radius) - 4px)'
       }
     },
-    plugins: [tailwindcssAnimate],
+    plugins: [tailwindcssAnimate]
   }
-
 }

@@ -1,4 +1,5 @@
 ## Notes
+
 - The `ThemeProvider` causes hydration errors when there is an extension that mutates the HTML document
   - Related extensions:
     - Refined GitHub

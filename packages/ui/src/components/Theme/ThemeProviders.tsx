@@ -1,11 +1,6 @@
 'use client'
 
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-} from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
 
 interface ThemeContextType {
   mode: 'light' | 'dark'
@@ -16,14 +11,15 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export function useThemeContext(): ThemeContextType {
   const ctx = useContext(ThemeContext)
-  if (!ctx) throw new Error('useThemeContext must be used within ThemeProviders')
+  if (!ctx)
+    throw new Error('useThemeContext must be used within ThemeProviders')
   return ctx
 }
 
 export function ThemeProviders({
   children,
   initialTheme,
-  initialThemeCookiePresent,
+  initialThemeCookiePresent
 }: {
   children: React.ReactNode
   initialTheme: 'light' | 'dark'
@@ -33,7 +29,9 @@ export function ThemeProviders({
 
   useEffect(() => {
     if (!initialThemeCookiePresent) {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+      const prefersDark = window.matchMedia(
+        '(prefers-color-scheme: dark)'
+      ).matches
       setMode(prefersDark ? 'dark' : 'light')
     }
   }, [initialThemeCookiePresent])

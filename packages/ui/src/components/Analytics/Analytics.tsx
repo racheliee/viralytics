@@ -1,4 +1,4 @@
-'use client' 
+'use client'
 
 import DashboardWrapper from '@viralytics/components/DashboardWrapper'
 import { useState, useEffect } from 'react'

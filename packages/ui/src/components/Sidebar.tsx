@@ -31,7 +31,9 @@ export const Sidebar: FC<SidebarProps> = ({ visible }) => {
       <div>
         <div className="flex flex-row gap-2 items-center justify-left my-4 mx-2">
           <AiFillAliwangwang className="size-10 fill-black dark:fill-white" />
-          <h2 className="font-bold text-xl text-black dark:text-white">Viralytics</h2>
+          <h2 className="font-bold text-xl text-black dark:text-white">
+            Viralytics
+          </h2>
         </div>
         <hr className="my-4 mx-2 border-gray-300" />
         <ul className="font-semibold mx-2 flex gap-2 flex-col">

@@ -21,10 +21,10 @@ export function handleAuthTokensFromUrl() {
 
   // If we modified the URL parameters, update the URL without reloading
   if (igToken || igUserId) {
-    const newUrl = urlParams.toString() 
-      ? `${window.location.pathname}?${urlParams.toString()}` 
+    const newUrl = urlParams.toString()
+      ? `${window.location.pathname}?${urlParams.toString()}`
       : window.location.pathname
-    
+
     window.history.replaceState({}, '', newUrl)
   }
 }

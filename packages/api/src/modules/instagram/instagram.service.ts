@@ -41,9 +41,6 @@ export class InstagramService {
     metric: MetricEnum,
     { breakdown, timeframe }: DemographicsRequestDto
   ): Promise<DemographicsResponseDto> {
-    this.logger.log(
-      `Fetching demographics with metric: ${metric}, breakdown: ${breakdown}, timeframe: ${timeframe}`
-    )
     const { data } = await this.igApi.get(`/${userId}/insights`, {
       params: {
         metric,

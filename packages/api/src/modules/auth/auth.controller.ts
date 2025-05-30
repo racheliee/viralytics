@@ -7,11 +7,11 @@ import {
   Res
 } from '@nestjs/common'
 import { AuthService } from 'src/modules/auth/auth.service'
-import { Response } from 'express'
 import { MetaCallbackRequestDto } from 'src/modules/auth/dto/meta-auth.dto'
 import { ACCESS_TOKEN_TTL } from 'src/modules/auth/constants/limits'
 import { DASHBOARD_URL } from 'src/modules/auth/constants/urls'
 import { ConfigService } from '@nestjs/config'
+import { FastifyReply } from 'fastify'
 
 @Controller('auth')
 export class AuthController {
@@ -23,14 +23,14 @@ export class AuthController {
   ) {}
 
   @Get('facebook-login')
-  loginFacebook(@Res() res: Response) {
+  loginFacebook(@Res() res: FastifyReply) {
     return res.redirect(this.authService.getFacebookRedirectUrl())
   }
 
   @Get('facebook-callback')
   async callbackFacebook(
     @Query() query: MetaCallbackRequestDto,
-    @Res() res: Response
+    @Res() res: FastifyReply
   ): Promise<void> {
     const accessToken = await this.authService.facebookCallback(query.code)
     // const accountId = await this.authService.getInstagramAccountId(accessToken)
@@ -44,23 +44,23 @@ export class AuthController {
       maxAge: ACCESS_TOKEN_TTL
     }
 
-    res.cookie('ig_token', accessToken, cookieOpts)
-    // res.cookie('ig_user_id', accountId, cookieOpts)
+    res.setCookie('ig_token', accessToken, cookieOpts)
+    // res.setCookie('ig_user_id', accountId, cookieOpts)
 
     const frontendUrl = this.configService.getOrThrow('FRONTEND_URL')
     return res.redirect(`${frontendUrl}/${DASHBOARD_URL}`)
   }
 
   @Get('instagram-login')
-  loginInstagram(@Res() res: Response) {
+  loginInstagram(@Res() res: FastifyReply) {
     const redirectUrl = this.authService.getInstagramRedirectUrl()
-    return res.redirect(302, redirectUrl)
+    return res.redirect(redirectUrl)
   }
 
   @Get('instagram-callback')
   async instagramCallback(
     @Query('code') code: string,
-    @Res({ passthrough: true }) res: Response
+    @Res({ passthrough: true }) res: FastifyReply
   ) {
     if (!code) {
       throw new BadRequestException('Code is required for Instagram login')
@@ -83,8 +83,8 @@ export class AuthController {
       maxAge: ACCESS_TOKEN_TTL
     }
 
-    res.cookie('ig_token', longToken, cookieOpts)
-    res.cookie('ig_user_id', profile.id, cookieOpts)
+    res.setCookie('ig_token', longToken, cookieOpts)
+    res.setCookie('ig_user_id', profile.id, cookieOpts)
 
     const frontendUrl = this.configService.getOrThrow('FRONTEND_URL')
 

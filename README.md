@@ -14,18 +14,37 @@
 
 ## Getting Started
 ```
+# Install dependencies for all workspaces
+rm -rf node_modules yarn.lock # if you have issues with dependencies
+yarn install
+```
+
+## Running the Project
+```
 # running the backend (port 3001)
-yarn workspace @viralytics/api dev
+yarn dev:api
 
 # running the frontend (port 3000)
-yarn workspace @viralytics/ui dev   
+yarn dev:ui
 ```
 
 ## Formatting
 To format the code, run in the respective directories:
 ```
+yarn prettier: fix
+
+# for each workspace (replace /api with each workspace name)
 yarn workspace @viralytics/api prettier:fix
-yarn workspace @viralytics/ui prettier:fix
 ```
 
+## Misc
+### Unnecessary Dependencies
+Go to each workspace and run:
+```
+depcheck
+yarn remove <unnecessary-package>
+
+# if you want to know why a seemingly unnecessary package is there
+yarn why <unnecessary-package> 
+```
 
