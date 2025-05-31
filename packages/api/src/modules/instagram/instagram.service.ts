@@ -90,13 +90,12 @@ export class InstagramService {
       params
     })
 
-    console.log(data)
     const raw = data.data[0]?.total_value?.breakdowns?.[0]?.results
     if (!Array.isArray(raw)) {
-      console.error(
-        'Unexpected format for breakdowns',
-        JSON.stringify(data, null, 2)
-      )
+      // console.error(
+      //   'Unexpected format for breakdowns',
+      //   JSON.stringify(data, null, 2)
+      // )
       throw new InternalServerErrorException('Unexpected API response format')
     }
 
