@@ -68,7 +68,7 @@ export class InstagramService {
         value: r.value
       })) || []
 
-    return new DemographicsResponseDto(breakdown, results)
+    return new DemographicsResponseDto([breakdown], results)
   }
 
   async getFollowsAndUnfollows(
@@ -76,10 +76,6 @@ export class InstagramService {
     userId: string,
     { since, until }: IgTimeRangeDto
   ): Promise<FollowAndUnfollowResponseDto> {
-    console.log(
-      `${since ? `Since: ${Math.floor(new Date(since).getTime() / 1000)}` : 'No since date provided'}`
-    )
-
     const params: Record<string, any> = {
       metric: MetricEnum.FOLLOWS_AND_UNFOLLOWS,
       access_token: token,
@@ -89,8 +85,6 @@ export class InstagramService {
       ...(since && { since: Math.floor(new Date(since).getTime() / 1000) }),
       ...(until && { until: Math.floor(new Date(until).getTime() / 1000) })
     }
-
-    console.log('Request parameters:', params)
 
     const { data } = await this.igApi.get(`/${userId}/insights`, {
       params
@@ -122,11 +116,6 @@ export class InstagramService {
         unknown += value
       }
     }
-
-    console.log(
-      `Follows: ${follower}, Unfollows: ${unfollower}, Unknown: ${unknown}`
-    )
-
     return new FollowAndUnfollowResponseDto(follower, unfollower, unknown)
   }
 }

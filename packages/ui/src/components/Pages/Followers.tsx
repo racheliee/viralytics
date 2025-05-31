@@ -21,6 +21,7 @@ export default function Followers() {
           type="followers"
           breakdown={DemographicBreakdownEnum.GENDER}
         />
+        {/* todo: add age & gender demographic */}
       </div>
       <DemographicsBar
         type="followers"

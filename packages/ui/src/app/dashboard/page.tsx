@@ -1,4 +1,4 @@
-import Analytics from '@viralytics/components/Analytics/Analytics'
+import Analytics from '@viralytics/components/Pages/Analytics'
 import AuthTokenHandler from '@viralytics/components/AuthTokenHandler'
 
 export default function DashboardPage() {

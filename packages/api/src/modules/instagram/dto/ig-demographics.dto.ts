@@ -14,13 +14,13 @@ export class DemographicsRequestDto {
 }
 
 export class DemographicsResponseDto {
-  @IsString()
-  dimension_key: string
+  @IsArray()
+  dimension_key: string[]
 
   @IsArray()
   results: InstagramBreakdownResults[]
 
-  constructor(dimension_key: string, results: InstagramBreakdownResults[]) {
+  constructor(dimension_key: string[], results: InstagramBreakdownResults[]) {
     this.dimension_key = dimension_key
     this.results = results
   }

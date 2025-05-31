@@ -1,4 +1,4 @@
-import Analytics from '@viralytics/components/Analytics/Analytics'
+import Analytics from '@viralytics/components/Pages/Analytics'
 
 export default function AnalyticsPage() {
   return <Analytics />
