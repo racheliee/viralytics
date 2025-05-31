@@ -106,12 +106,12 @@ export default function DemographicsPie({
             <CardHeader>
               <CardTitle>
                 Follower Breakdown by{' '}
-                {data.dimension_key.charAt(0).toUpperCase() +
-                  data.dimension_key.slice(1)}
+                {data.dimension_key[0].charAt(0).toUpperCase() +
+                  data.dimension_key[0].slice(1)}
               </CardTitle>
               <CardDescription>
-                {data.dimension_key.charAt(0).toUpperCase() +
-                  data.dimension_key.slice(1)}{' '}
+                {data.dimension_key[0].charAt(0).toUpperCase() +
+                  data.dimension_key[0].slice(1)}{' '}
                 breakdown for the last{' '}
                 {timeframeLabels[selectedTimeframe] || '30 days'}
               </CardDescription>
