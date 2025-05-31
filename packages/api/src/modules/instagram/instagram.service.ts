@@ -260,10 +260,11 @@ export class InstagramService {
 
     // Transform the response to the simplified format
     const simplifiedData = response.data.map((metric) => {
+      // Add additional null checks to prevent TypeError
       const breakdownResults =
-        metric.total_value.breakdowns?.[0]?.results.map((result) => {
+        metric.total_value?.breakdowns?.[0]?.results?.map((result) => {
           return new SimplifiedBreakdownResult(
-            result.dimension_values[0],
+            result.dimension_values?.[0] || 'Unknown',
             result.value
           )
         }) || []
