@@ -16,6 +16,7 @@ import {
   MetricsRequestDto,
   SimplifiedMetricsResponseDto
 } from 'src/modules/instagram/dto/ig-metrics.dto'
+import { IgMediaResponseDto } from 'src/modules/instagram/dto/ig-media.dto'
 
 @Controller('instagram')
 @UseGuards(InstagramCookieGuard)
@@ -157,4 +158,11 @@ export class InstagramController {
   //     }
   //   )
   // }
+
+  @Post('media')
+  async getMedia(
+    @ReqWithInstagram() req: { token: string; userId: string },
+  ): Promise<IgMediaResponseDto> {
+    return await this.instagramService.getMedia(req.token, req.userId)
+  }
 }

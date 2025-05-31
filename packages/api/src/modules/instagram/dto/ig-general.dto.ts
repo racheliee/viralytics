@@ -29,7 +29,7 @@ export class IgBreakdownRequestDto extends IgTimeRangeDto {
 export class IgGeneralRequestDto extends IgTimeRangeDto {
   @IsString()
   @IsOptional()
-  breakdown: GeneralBreakdownEnum
+  breakdown?: GeneralBreakdownEnum 
 
   constructor(breakdown?: GeneralBreakdownEnum, since?: Date, until?: Date) {
     super(since, until)

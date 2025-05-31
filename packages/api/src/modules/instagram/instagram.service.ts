@@ -11,6 +11,8 @@ import {
   PeriodEnum
 } from '@viralytics/shared-constants'
 import axios, { AxiosInstance } from 'axios'
+import { MEDIA_FIELDS, MEDIA_LIMIT } from 'src/modules/instagram/constants/limit'
+import { InstagramMediaResults } from 'src/modules/instagram/constants/types'
 import {
   DemographicsRequestDto,
   DemographicsResponseDto
@@ -19,6 +21,7 @@ import {
   FollowAndUnfollowResponseDto,
   IgTimeRangeDto
 } from 'src/modules/instagram/dto/ig-general.dto'
+import { IgMediaResponseDto } from 'src/modules/instagram/dto/ig-media.dto'
 import {
   MetricsRequestDto,
   MetricsResponseDto,
@@ -119,6 +122,47 @@ export class InstagramService {
       }
     }
     return new FollowAndUnfollowResponseDto(follower, unfollower, unknown)
+  }
+
+  async getMedia(token: string, userId: string): Promise<IgMediaResponseDto> {
+    const { data } = await this.igApi.get(`/${userId}/media`, {
+      params: {
+        access_token: token,
+        fields: MEDIA_FIELDS,
+        limit: MEDIA_LIMIT
+      }
+    })
+
+    if (!data || !data.data) {
+      this.logger.error('Invalid response from Instagram API', data)
+      throw new InternalServerErrorException(
+        'Failed to fetch media data from Instagram'
+      )
+    }
+
+    const results: InstagramMediaResults[] = data.data.map((item: any) => ({
+      id: item.id,
+      caption: item.caption,
+      comments_count: item.comments_count,
+      is_comment_enabled: item.is_comment_enabled,
+      like_count: item.like_count,
+      media_product_type: item.media_product_type,
+      media_type: item.media_type,
+      media_url: item.media_url,
+      thumbnail_url: item.thumbnail_url,
+      permalink: item.permalink,
+      shortcode: item.shortcode,
+      timestamp: item.timestamp,
+      username: item.username,
+      alt_text: item.alt_text,
+      is_shared_to_feed: item.is_shared_to_feed,
+      legacy_instagram_media_id: item.legacy_instagram_media_id,
+      boost_ads_list: item.boost_ads_list,
+      boost_eligiblity_ionfo: item.boost_eligiblity_ionfo,
+      owner: item.owner
+    }))
+
+    return new IgMediaResponseDto(results)
   }
 
   async getReplies(

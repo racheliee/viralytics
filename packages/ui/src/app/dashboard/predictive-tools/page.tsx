@@ -1,5 +1,5 @@
-import Analytics from '@viralytics/components/Pages/Analytics/Analytics'
+import PredictiveTools from '@viralytics/components/Pages/PredictiveTools'
 
 export default function AnalyticsPage() {
-  return <Analytics />
+  return <PredictiveTools />
 }

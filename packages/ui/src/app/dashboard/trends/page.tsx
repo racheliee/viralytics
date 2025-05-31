@@ -1,5 +1,5 @@
-import Analytics from '@viralytics/components/Pages/Analytics/Analytics'
+import Trends from "@viralytics/components/Pages/Trends";
 
-export default function AnalyticsPage() {
-  return <Analytics />
+export default function TrendsPage() {
+  return <Trends />
 }
