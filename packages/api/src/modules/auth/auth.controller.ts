@@ -6,12 +6,12 @@ import {
   Query,
   Res
 } from '@nestjs/common'
-import { AuthService } from 'src/modules/auth/auth.service'
-import { MetaCallbackRequestDto } from 'src/modules/auth/dto/meta-auth.dto'
-import { ACCESS_TOKEN_TTL } from 'src/modules/auth/constants/limits'
-import { DASHBOARD_URL } from 'src/modules/auth/constants/urls'
 import { ConfigService } from '@nestjs/config'
 import { FastifyReply } from 'fastify'
+import { AuthService } from 'src/modules/auth/auth.service'
+import { ACCESS_TOKEN_TTL } from 'src/modules/auth/constants/limits'
+import { DASHBOARD_URL } from 'src/modules/auth/constants/urls'
+import { MetaCallbackRequestDto } from 'src/modules/auth/dto/meta-auth.dto'
 
 @Controller('auth')
 export class AuthController {
@@ -54,7 +54,7 @@ export class AuthController {
   @Get('instagram-login')
   loginInstagram(@Res() res: FastifyReply) {
     const redirectUrl = this.authService.getInstagramRedirectUrl()
-    return res.redirect(redirectUrl)
+    return res.status(302).redirect(redirectUrl)
   }
 
   @Get('instagram-callback')
@@ -90,12 +90,12 @@ export class AuthController {
 
     // In local environment, add token and user ID as URL parameters
     if (!isProd) {
-      return res.redirect(
+      return res.status(302).redirect(
         `${frontendUrl}/${DASHBOARD_URL}?ig_token=${encodeURIComponent(longToken)}&ig_user_id=${encodeURIComponent(profile.id)}`
       )
     }
 
     // In production, just redirect normally as cookies will work
-    return res.redirect(`${frontendUrl}/${DASHBOARD_URL}`)
+    return res.status(302).redirect(`${frontendUrl}/${DASHBOARD_URL}`)
   }
 }
