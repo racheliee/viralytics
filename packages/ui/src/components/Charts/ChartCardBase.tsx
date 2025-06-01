@@ -30,7 +30,9 @@ export default function ChartCardBase({
       <div className="flex items-start justify-between flex-row pe-4">
         <CardHeader>
           <CardTitle>{title}</CardTitle>
-          <CardDescription className="whitespace-pre-line">{description}</CardDescription>
+          <CardDescription className="whitespace-pre-line">
+            {description}
+          </CardDescription>
         </CardHeader>
         <div className="pt-4">{headerRight}</div>
       </div>

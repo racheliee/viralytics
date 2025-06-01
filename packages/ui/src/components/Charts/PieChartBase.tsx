@@ -1,7 +1,10 @@
 'use client'
 
 import { PieChart, Pie, Cell } from 'recharts'
-import { ChartTooltip, ChartTooltipContent } from '@viralytics/components/ui/chart'
+import {
+  ChartTooltip,
+  ChartTooltipContent
+} from '@viralytics/components/ui/chart'
 import { ChartColors } from './types/colours'
 
 interface PieChartBaseProps {
@@ -18,7 +21,11 @@ export function PieChartBase({
   height = 300
 }: PieChartBaseProps) {
   return (
-    <PieChart width={width} height={height} style={{ backgroundColor: 'transparent' }}>
+    <PieChart
+      width={width}
+      height={height}
+      style={{ backgroundColor: 'transparent' }}
+    >
       <Pie
         data={data}
         dataKey="value"

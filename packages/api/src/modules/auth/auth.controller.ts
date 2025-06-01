@@ -90,9 +90,11 @@ export class AuthController {
 
     // In local environment, add token and user ID as URL parameters
     if (!isProd) {
-      return res.status(302).redirect(
-        `${frontendUrl}/${DASHBOARD_URL}?ig_token=${encodeURIComponent(longToken)}&ig_user_id=${encodeURIComponent(profile.id)}`
-      )
+      return res
+        .status(302)
+        .redirect(
+          `${frontendUrl}/${DASHBOARD_URL}?ig_token=${encodeURIComponent(longToken)}&ig_user_id=${encodeURIComponent(profile.id)}`
+        )
     }
 
     // In production, just redirect normally as cookies will work

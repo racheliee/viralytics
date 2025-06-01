@@ -8,7 +8,6 @@ export function cn(...inputs: ClassValue[]) {
 
 export const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1)
 
-
 export const timeframeLabels: Record<TimeframeEnum, string> = {
   [TimeframeEnum.LAST_14_DAYS]: 'Last 14 Days',
   [TimeframeEnum.LAST_30_DAYS]: 'Last 30 Days',

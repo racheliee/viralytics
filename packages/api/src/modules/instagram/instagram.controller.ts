@@ -161,7 +161,7 @@ export class InstagramController {
 
   @Post('media')
   async getMedia(
-    @ReqWithInstagram() req: { token: string; userId: string },
+    @ReqWithInstagram() req: { token: string; userId: string }
   ): Promise<IgMediaResponseDto> {
     return await this.instagramService.getMedia(req.token, req.userId)
   }

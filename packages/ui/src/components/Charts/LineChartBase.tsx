@@ -71,7 +71,7 @@ export default function LineChartBase({
         <div className="font-medium">{label}</div>
         <div className="mt-2 space-y-1">
           {payload.map((entry: any) => {
-            const line = lines.find(l => l.dataKey === entry.dataKey)
+            const line = lines.find((l) => l.dataKey === entry.dataKey)
             const breakdowns = line?.breakdowns?.[label]
 
             return (
@@ -88,9 +88,14 @@ export default function LineChartBase({
                 {breakdowns && breakdowns.length > 0 && (
                   <div className="ml-5 mt-1 space-y-1 text-xs text-muted-foreground">
                     {breakdowns.map((breakdown) => (
-                      <div key={breakdown.dimension_value} className="flex justify-between">
+                      <div
+                        key={breakdown.dimension_value}
+                        className="flex justify-between"
+                      >
                         <span>{breakdown.dimension_value}:</span>
-                        <span className="font-medium">{breakdown.value.toLocaleString()}</span>
+                        <span className="font-medium">
+                          {breakdown.value.toLocaleString()}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -104,20 +109,20 @@ export default function LineChartBase({
   }
 
   // Filter out data points with missing values for the selected metrics
-  const filteredData = data.filter(item => 
-    lines.every(line => typeof item[line.dataKey] === 'number')
+  const filteredData = data.filter((item) =>
+    lines.every((line) => typeof item[line.dataKey] === 'number')
   )
-  
+
   return (
-    <div className={cn("overflow-hidden", className)}>
+    <div className={cn('overflow-hidden', className)}>
       <ChartContainer config={config}>
-          <LineChart
-            width={width}
-            height={height}
-            data={filteredData} 
-            margin={{ top: 20, right: 20, left: 10, bottom: 20 }}
-            style={{ backgroundColor: 'transparent' }}
-          >
+        <LineChart
+          width={width}
+          height={height}
+          data={filteredData}
+          margin={{ top: 20, right: 20, left: 10, bottom: 20 }}
+          style={{ backgroundColor: 'transparent' }}
+        >
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis
             dataKey="date"
@@ -148,12 +153,12 @@ export default function LineChartBase({
               name={line.name}
               stroke="#000000"
               strokeWidth={2}
-              dot={{ r: 3, strokeWidth: 1, fill: "#000000" }}
-              activeDot={{ r: 5, fill: "#000000" }}
+              dot={{ r: 3, strokeWidth: 1, fill: '#000000' }}
+              activeDot={{ r: 5, fill: '#000000' }}
               connectNulls={true}
             />
           ))}
-          </LineChart>
+        </LineChart>
       </ChartContainer>
     </div>
   )

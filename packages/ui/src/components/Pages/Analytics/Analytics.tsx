@@ -17,7 +17,7 @@ export default function Analytics() {
         <h2 className="text-xl font-semibold mb-4">Engagement Metrics</h2>
         <MetricsLineChart />
       </div>
-      
+
       <h2 className="text-xl font-semibold mb-4">Engaged Audience Insights</h2>
       <div className="flex flex-row items-center justify-between gap-6 mb-6">
         <DemographicsBar

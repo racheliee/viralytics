@@ -17,7 +17,10 @@ interface TimeframeSelectProps {
 
 export function TimeframeSelect({ selected, onChange }: TimeframeSelectProps) {
   return (
-    <Select value={selected} onValueChange={(value) => onChange(value as TimeframeEnum)}>
+    <Select
+      value={selected}
+      onValueChange={(value) => onChange(value as TimeframeEnum)}
+    >
       <SelectTrigger className="w-40">
         <SelectValue placeholder="Timeframe" />
       </SelectTrigger>
