@@ -1,19 +1,19 @@
 'use client'
 
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  LabelList,
-  Cell
-} from 'recharts'
+import { ChartColors } from '@viralytics/components/Charts/types/Colours'
 import {
   ChartTooltip,
   ChartTooltipContent
 } from '@viralytics/components/ui/chart'
-import { ChartColors } from '@viralytics/components/Charts/types/colours'
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  LabelList,
+  XAxis,
+  YAxis
+} from 'recharts'
 
 interface BarChartBaseProps {
   data: { label: string; value: number }[]

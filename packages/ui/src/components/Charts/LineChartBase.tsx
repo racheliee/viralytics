@@ -1,19 +1,17 @@
 'use client'
 
-import React from 'react'
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend
-} from 'recharts'
-import {
-  ChartContainer,
-} from '@viralytics/components/ui/chart'
+import { CustomChartTooltip } from '@viralytics/components/Charts/CustomChartTooltip'
+import { ChartContainer } from '@viralytics/components/ui/chart'
 import { cn } from '@viralytics/lib/utils'
+import {
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  Tooltip,
+  XAxis,
+  YAxis
+} from 'recharts'
 
 export interface LineChartData {
   date: string
@@ -36,7 +34,7 @@ export interface LineChartProps {
   }[]
   className?: string
   yAxisFormatter?: (value: number) => string
-  tooltipFormatter?: (value: number, name: string) => React.ReactNode
+  tooltipFormatter?: (value: number) => string
   width?: number
   height?: number
 }
@@ -46,7 +44,7 @@ export default function LineChartBase({
   lines,
   className,
   yAxisFormatter = (value) => value.toLocaleString(),
-  tooltipFormatter,
+  tooltipFormatter = (value) => value.toLocaleString(),
   width = 500,
   height = 220
 }: LineChartProps) {
@@ -61,50 +59,7 @@ export default function LineChartBase({
     {} as Record<string, { label: string; color: string }>
   )
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
-    if (!active || !payload || !payload.length) return null
-
-    return (
-      <div className="rounded-lg border bg-background p-2 shadow-md">
-        <div className="font-medium">{label}</div>
-        <div className="mt-2 space-y-1">
-          {payload.map((entry: any) => {
-            const line = lines.find((l) => l.dataKey === entry.dataKey)
-            const breakdowns = line?.breakdowns?.[label]
-
-            return (
-              <div key={entry.dataKey}>
-                <div className="flex items-center gap-2">
-                  <div
-                    className="h-3 w-3 rounded-full"
-                    style={{ backgroundColor: entry.color }}
-                  />
-                  <span className="font-medium">
-                    {line?.name || entry.name}: {entry.value.toLocaleString()}
-                  </span>
-                </div>
-                {breakdowns && breakdowns.length > 0 && (
-                  <div className="ml-5 mt-1 space-y-1 text-xs text-muted-foreground">
-                    {breakdowns.map((breakdown) => (
-                      <div
-                        key={breakdown.dimension_value}
-                        className="flex justify-between"
-                      >
-                        <span>{breakdown.dimension_value}:</span>
-                        <span className="font-medium">
-                          {breakdown.value.toLocaleString()}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )
-          })}
-        </div>
-      </div>
-    )
-  }
+  // Removed CustomTooltip component - now using the shared ChartTooltip component
 
   // Filter out data points with missing values for the selected metrics
   const filteredData = data.filter((item) =>
@@ -141,7 +96,18 @@ export default function LineChartBase({
             tickCount={5} // Suggest number of ticks
             interval="preserveStartEnd" // Ensure min/max ticks are shown
           />
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip
+            content={(props) => <CustomChartTooltip {...props} lines={lines} />}
+            contentStyle={{
+              backgroundColor: 'var(--popover)',
+              color: 'var(--foreground)',
+              border: '1px solid var(--border)',
+              borderRadius: '0.5rem',
+              padding: '0.5rem'
+            }}
+            wrapperStyle={{ backgroundColor: 'transparent' }}
+            formatter={(value) => tooltipFormatter(Number(value))}
+          />
           <Legend verticalAlign="top" height={36} />
           {lines.map((line) => (
             <Line

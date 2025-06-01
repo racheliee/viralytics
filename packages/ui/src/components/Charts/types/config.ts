@@ -1,4 +1,4 @@
-import { ChartColors } from '@viralytics/components/Charts/types/colours'
+import { ChartColors } from '@viralytics/components/Charts/types/Colours'
 import { ChartConfig } from '@viralytics/components/ui/chart'
 
 export const ChartConfigBase: ChartConfig = {

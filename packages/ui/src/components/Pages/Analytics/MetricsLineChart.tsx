@@ -5,7 +5,7 @@ import LineChartBase, {
   LineChartBreakdown,
   LineChartData
 } from '@viralytics/components/Charts/LineChartBase'
-import { ChartColors } from '@viralytics/components/Charts/types/colours'
+import { ChartColors } from '@viralytics/components/Charts/types/Colours'
 import { ChartConfigBase } from '@viralytics/components/Charts/types/config'
 import { ChartContainer } from '@viralytics/components/ui/chart'
 import {
@@ -200,7 +200,8 @@ export default function MetricsLineChart() {
           METRICS[selectedMetric as keyof typeof METRICS]?.name ||
           selectedMetric,
         color:
-          METRICS[selectedMetric as keyof typeof METRICS]?.color || ChartColors[1],
+          METRICS[selectedMetric as keyof typeof METRICS]?.color ||
+          ChartColors[1],
         breakdowns: breakdowns[selectedMetric]
       }
     ]
