@@ -12,11 +12,11 @@ import {
   FollowAndUnfollowResponseDto,
   IgTimeRangeDto
 } from 'src/modules/instagram/dto/ig-general.dto'
+import { IgMediaResponseDto } from 'src/modules/instagram/dto/ig-media.dto'
 import {
   MetricsRequestDto,
   SimplifiedMetricsResponseDto
 } from 'src/modules/instagram/dto/ig-metrics.dto'
-import { IgMediaResponseDto } from 'src/modules/instagram/dto/ig-media.dto'
 
 @Controller('instagram')
 @UseGuards(InstagramCookieGuard)
@@ -82,82 +82,6 @@ export class InstagramController {
       }
     )
   }
-
-  // @Post('metrics/replies')
-  // async getReplies(
-  //   @ReqWithInstagram() req: { token: string; userId: string },
-  //   @Body() body: MetricsRequestDto
-  // ): Promise<MetricsResponseDto> {
-  //   return await this.instagramService.getReplies(
-  //     req.token,
-  //     req.userId,
-  //     body
-  //   )
-  // }
-
-  // @Post('metrics/shares')
-  // async getShares(
-  //   @ReqWithInstagram() req: { token: string; userId: string },
-  //   @Body() body: MetricsRequestDto
-  // ): Promise<MetricsResponseDto> {
-  //   return await this.instagramService.getMetricsWithBreakdown(
-  //     req.token,
-  //     req.userId,
-  //     MetricEnum.SHARES,
-  //     {
-  //       ...body,
-  //       breakdown: GeneralBreakdownEnum.MEDIA_PRODUCT_TYPE
-  //     }
-  //   )
-  // }
-
-  // @Post('metrics/saves')
-  // async getSaves(
-  //   @ReqWithInstagram() req: { token: string; userId: string },
-  //   @Body() body: MetricsRequestDto
-  // ): Promise<MetricsResponseDto> {
-  //   return await this.instagramService.getMetricsWithBreakdown(
-  //     req.token,
-  //     req.userId,
-  //     MetricEnum.SAVES,
-  //     {
-  //       ...body,
-  //       breakdown: GeneralBreakdownEnum.MEDIA_PRODUCT_TYPE
-  //     }
-  //   )
-  // }
-
-  // @Post('metrics/total-interactions')
-  // async getTotalInteractions(
-  //   @ReqWithInstagram() req: { token: string; userId: string },
-  //   @Body() body: MetricsRequestDto
-  // ): Promise<MetricsResponseDto> {
-  //   return await this.instagramService.getMetricsWithBreakdown(
-  //     req.token,
-  //     req.userId,
-  //     MetricEnum.TOTAL_INTERACTIONS,
-  //     {
-  //       ...body,
-  //       breakdown: GeneralBreakdownEnum.MEDIA_PRODUCT_TYPE
-  //     }
-  //   )
-  // }
-
-  // @Post('metrics/comments-likes')
-  // async getCommentsAndLikes(
-  //   @ReqWithInstagram() req: { token: string; userId: string },
-  //   @Body() body: MetricsRequestDto
-  // ): Promise<MetricsResponseDto> {
-  //   return await this.instagramService.getMultipleMetrics(
-  //     req.token,
-  //     req.userId,
-  //     [MetricEnum.COMMENTS, MetricEnum.LIKES],
-  //     {
-  //       ...body,
-  //       breakdown: GeneralBreakdownEnum.MEDIA_PRODUCT_TYPE
-  //     }
-  //   )
-  // }
 
   @Post('media')
   async getMedia(
