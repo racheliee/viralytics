@@ -5,6 +5,7 @@ import LineChartBase, {
   LineChartBreakdown,
   LineChartData
 } from '@viralytics/components/Charts/LineChartBase'
+import { ChartColors } from '@viralytics/components/Charts/types/colours'
 import { ChartConfigBase } from '@viralytics/components/Charts/types/config'
 import { ChartContainer } from '@viralytics/components/ui/chart'
 import {
@@ -31,12 +32,12 @@ interface MetricsResponse {
 }
 
 const METRICS = {
-  likes: { name: 'Likes', color: '#000000' },
-  comments: { name: 'Comments', color: '#000000' },
-  shares: { name: 'Shares', color: '#000000' },
-  saves: { name: 'Saves', color: '#000000' },
-  total_interactions: { name: 'Total Interactions', color: '#000000' },
-  replies: { name: 'Replies', color: '#000000' }
+  likes: { name: 'Likes', color: ChartColors[0] },
+  comments: { name: 'Comments', color: ChartColors[1] },
+  shares: { name: 'Shares', color: ChartColors[2] },
+  saves: { name: 'Saves', color: ChartColors[3] },
+  total_interactions: { name: 'Total Interactions', color: ChartColors[4] },
+  replies: { name: 'Replies', color: ChartColors[5] }
 }
 
 export default function MetricsLineChart() {
@@ -199,7 +200,7 @@ export default function MetricsLineChart() {
           METRICS[selectedMetric as keyof typeof METRICS]?.name ||
           selectedMetric,
         color:
-          METRICS[selectedMetric as keyof typeof METRICS]?.color || '#000000',
+          METRICS[selectedMetric as keyof typeof METRICS]?.color || ChartColors[1],
         breakdowns: breakdowns[selectedMetric]
       }
     ]

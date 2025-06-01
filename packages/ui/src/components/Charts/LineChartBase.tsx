@@ -8,12 +8,10 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  ResponsiveContainer,
   Legend
 } from 'recharts'
 import {
   ChartContainer,
-  ChartTooltipContent
 } from '@viralytics/components/ui/chart'
 import { cn } from '@viralytics/lib/utils'
 
@@ -151,10 +149,10 @@ export default function LineChartBase({
               type="monotone"
               dataKey={line.dataKey}
               name={line.name}
-              stroke="#000000"
+              stroke={line.color}
               strokeWidth={2}
-              dot={{ r: 3, strokeWidth: 1, fill: '#000000' }}
-              activeDot={{ r: 5, fill: '#000000' }}
+              dot={{ r: 3, strokeWidth: 1, fill: line.color }}
+              activeDot={{ r: 5, fill: line.color }}
               connectNulls={true}
             />
           ))}
