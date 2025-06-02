@@ -21,3 +21,6 @@ tsconfig.tsbuildinfo
 !.yarn/plugins
 !.yarn/sdks
 !.yarn/patches
+
+venv/
+vit_regressor.pth
