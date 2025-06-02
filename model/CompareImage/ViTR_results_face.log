@@ -1,0 +1,7 @@
+2025-06-02 17:34:32,134 [INFO] Winner: IMG_3187.JPG with score=5.59
+2025-06-02 17:34:32,135 [INFO] IMG_3187.JPG score=5.59
+2025-06-02 17:34:32,135 [INFO] IMG_3187.JPG reasons: ['face detected=True', 'smile=True', 'makeup=True', 'eyes open=True', 'symmetry=False', 'age=27', "gender={'Woman': 8.06959867477417, 'Man': 91.93040132522583}", 'pose=frontal', 'brightness=151.0', 'contrast=65.1', 'sharpness=20.1', 'composition_rule_of_thirds=False', 'background_clutter=False', 'style=none', 'props=[]', 'lighting=natural', 'attention_heatmap_computed']
+2025-06-02 17:34:32,135 [INFO] IMG_4829.JPG score=5.12
+2025-06-02 17:34:32,135 [INFO] IMG_4829.JPG reasons: ['face detected=True', 'smile=False', 'makeup=False', 'eyes open=True', 'symmetry=False', 'age=36', "gender={'Woman': 4.2078811675310135, 'Man': 95.79212069511414}", 'pose=frontal', 'brightness=135.3', 'contrast=46.9', 'sharpness=118.5', 'composition_rule_of_thirds=False', 'background_clutter=False', 'style=none', 'props=[]', 'lighting=natural', 'attention_heatmap_computed']
+2025-06-02 17:34:32,135 [INFO] IMG_4829.JPG score=5.12
+2025-06-02 17:34:32,135 [INFO] IMG_4829.JPG reasons: ['face detected=True', 'smile=False', 'makeup=False', 'eyes open=True', 'symmetry=False', 'age=36', "gender={'Woman': 4.2078811675310135, 'Man': 95.79212069511414}", 'pose=frontal', 'brightness=135.3', 'contrast=46.9', 'sharpness=118.5', 'composition_rule_of_thirds=False', 'background_clutter=False', 'style=none', 'props=[]', 'lighting=natural', 'attention_heatmap_computed']

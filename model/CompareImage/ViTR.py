@@ -18,7 +18,7 @@ import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1" # Disable GPU
 import logging
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", handlers=[logging.FileHandler("ViTR_results.log"),logging.StreamHandler(sys.stdout)])
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", handlers=[logging.FileHandler("ViTR_results_face.log"),logging.StreamHandler(sys.stdout)])
 log = logging.getLogger()  
 
 
@@ -134,7 +134,7 @@ def detect_sharpness(pil_img):
 # Composition: rule-of-thirds saliency
 
 def detect_composition(pil_img):
-    h, w = pil_img.size
+    w, h = pil_img.size
     thirds = [(w//3, h//3), (2*w//3, h//3), (w//3, 2*h//3), (2*w//3, 2*h//3)]
     gray = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2GRAY)
     sal = cv2.saliency.StaticSaliencyFineGrained_create().computeSaliency(gray)[1]
