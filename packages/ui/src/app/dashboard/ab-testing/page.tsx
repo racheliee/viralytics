@@ -1,4 +1,4 @@
-import AbTesting from '@viralytics/components/Pages/AbTesting'
+import AbTesting from '@viralytics/components/Pages/ABTesting/AbTesting'
 
 export default function AbTestingPage() {
   return <AbTesting />

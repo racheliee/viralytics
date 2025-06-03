@@ -1,9 +1,15 @@
+'use client'
+
+import MediaUploader from '@viralytics/components/Components/MediaUploader'
 import DashboardWrapper from '@viralytics/components/DashboardWrapper'
+
 
 export default function AbTesting() {
   return (
     <DashboardWrapper title="AB Testing">
-      <h2 className="text-xl font-semibold mb-4">AB Testing</h2>
+      <div className="max-w-3xl mx-auto p-6">
+        <MediaUploader />
+      </div>
     </DashboardWrapper>
   )
 }
