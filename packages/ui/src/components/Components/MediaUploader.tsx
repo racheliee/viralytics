@@ -11,12 +11,25 @@ import {
 } from '@viralytics/components/ui/card'
 import { Input } from '@viralytics/components/ui/input'
 
-export default function MediaUploader() {
+interface MediaUploaderProps {
+  maxFileNum?: number
+}
+
+export default function MediaUploader({ maxFileNum = 5 }: MediaUploaderProps) {
   const [files, setFiles] = useState<File[]>([])
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      setFiles(Array.from(e.target.files))
+      const selectedFiles = Array.from(e.target.files)
+
+      // Limit total number of files
+      const total = files.length + selectedFiles.length
+      if (total > maxFileNum) {
+        const allowedCount = maxFileNum - files.length
+        setFiles(prev => [...prev, ...selectedFiles.slice(0, allowedCount)])
+      } else {
+        setFiles(prev => [...prev, ...selectedFiles])
+      }
     }
   }
 
@@ -33,8 +46,12 @@ export default function MediaUploader() {
             multiple
             accept="image/*,video/*"
             onChange={handleFileChange}
+            disabled={files.length >= maxFileNum}
             className="cursor-pointer"
           />
+          <p className="text-sm text-muted-foreground mt-2">
+            {files.length} files uploaded (Upto {maxFileNum} allowed)
+          </p>
         </CardContent>
       </Card>
 
