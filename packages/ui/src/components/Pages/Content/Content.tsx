@@ -54,7 +54,7 @@ export default function Content() {
     <DashboardWrapper title="Content">
       <div className="space-y-6">
         {error && <p className="text-red-500 text-sm">{error}</p>}
-        <div className="flex flex-wrap gap-4 items-center justify-end">
+        <div className="flex flex-wrap gap-4 items-center justify-end p-4">
           <MediaFilter filterType={filterType} onFilterChange={setFilterType} />
           <MediaSort sortBy={sortBy} onChange={setSortBy} />
         </div>
