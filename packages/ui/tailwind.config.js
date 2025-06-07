@@ -1,4 +1,5 @@
 import tailwindcssAnimate from 'tailwindcss-animate'
+import typography from '@tailwindcss/typography'
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -60,6 +61,6 @@ module.exports = {
         sm: 'calc(var(--radius) - 4px)'
       }
     },
-    plugins: [tailwindcssAnimate]
+    plugins: [tailwindcssAnimate, typography]
   }
 }

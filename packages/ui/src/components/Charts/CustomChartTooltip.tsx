@@ -7,6 +7,7 @@ import { TooltipProps } from 'recharts'
 
 // Use more flexible generic types to match Recharts' internal types
 export interface CustomTooltipProps
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   extends Omit<TooltipProps<any, any>, 'lines'> {
   lines?: {
     dataKey: string

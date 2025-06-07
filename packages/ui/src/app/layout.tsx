@@ -4,6 +4,7 @@ import '@viralytics/styles/globals.css'
 import React from 'react'
 import { ThemeProviders } from '@viralytics/components/Theme/ThemeProviders'
 import { cookies } from 'next/headers'
+import { Toaster } from 'sonner'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -49,6 +50,7 @@ export default async function RootLayout({
             initialThemeCookiePresent={initialCookiePresent}
           >
             {children}
+            <Toaster />
           </ThemeProviders>
         </div>
       </body>

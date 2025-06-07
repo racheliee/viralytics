@@ -1,6 +1,6 @@
 'use client'
 
-import { ChartColors } from '@viralytics/components/Charts/types/Colours'
+import { ChartColors } from '@viralytics/components/Charts/types/colours';
 import {
   ChartTooltip,
   ChartTooltipContent

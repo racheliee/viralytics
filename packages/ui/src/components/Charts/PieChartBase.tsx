@@ -1,11 +1,12 @@
 'use client'
 
+import { ChartColors } from '@viralytics/components/Charts/types/colours';
 import {
   ChartTooltip,
   ChartTooltipContent
 } from '@viralytics/components/ui/chart'
 import { Cell, Pie, PieChart } from 'recharts'
-import { ChartColors } from './types/Colours'
+
 
 interface PieChartBaseProps {
   data: { keyLabel: string; value: number }[]
