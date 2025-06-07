@@ -13,7 +13,10 @@ interface MediaFilterProps {
   onFilterChange: (type: string) => void
 }
 
-export default function MediaFilter({ filterType, onFilterChange }: MediaFilterProps) {
+export default function MediaFilter({
+  filterType,
+  onFilterChange
+}: MediaFilterProps) {
   const types = ['All', 'IMAGE', 'VIDEO', 'CAROUSEL_ALBUM']
 
   return (

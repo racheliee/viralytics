@@ -3,6 +3,5 @@ export enum TabsEnum {
   FOLLOWERS = 'followers',
   CONTENT = 'content',
   PREDICTIVE_TOOLS = 'predictive-tools',
-  AB_TESTING = 'ab-testing',
-  TRENDS = 'trends'
+  AB_TESTING = 'ab-testing'
 }
