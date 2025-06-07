@@ -9,11 +9,11 @@ export default function AbTesting() {
   const [bestIndex, setBestIndex] = useState<number | null>(null)
 
   const evaluateBest = async (): Promise<number> => {
-    await new Promise((resolve) => setTimeout(resolve, 500))
+    await new Promise((resolve) => setTimeout(resolve, 3000))
     const targetName = 'IMG_3187.JPG'
     const index = files.findIndex((file) => file.name === targetName)
     setBestIndex(index)
-    return index !== -1 ? index : 0 // default to 0 if not found
+    return index !== -1 ? index : 0
   }
 
   return (

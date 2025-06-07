@@ -11,18 +11,21 @@ import {
 } from '@viralytics/components/ui/card'
 import { Input } from '@viralytics/components/ui/input'
 import { Button } from '@viralytics/components/ui/button'
+
 interface MediaUploaderProps {
   files: File[]
   setFiles: React.Dispatch<React.SetStateAction<File[]>>
-  onEvaluate: () => Promise<number>
   maxFileNum?: number
+  onEvaluate?: () => Promise<number>
+  showBest?: boolean
 }
 
 export default function MediaUploader({
   files,
   setFiles,
+  maxFileNum = 20,
   onEvaluate,
-  maxFileNum = 20
+  showBest = true
 }: MediaUploaderProps) {
   const [bestIndex, setBestIndex] = useState<number | null>(null)
   const [loading, setLoading] = useState(false)
@@ -30,12 +33,11 @@ export default function MediaUploader({
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const selectedFiles = Array.from(e.target.files)
-
-      // Limit total number of files
       const total = files.length + selectedFiles.length
+
       if (total > maxFileNum) {
-        const allowedCount = maxFileNum - files.length
-        setFiles((prev) => [...prev, ...selectedFiles.slice(0, allowedCount)])
+        const allowed = maxFileNum - files.length
+        setFiles((prev) => [...prev, ...selectedFiles.slice(0, allowed)])
       } else {
         setFiles((prev) => [...prev, ...selectedFiles])
       }
@@ -43,12 +45,13 @@ export default function MediaUploader({
   }
 
   const handleCheckBest = async () => {
+    if (!onEvaluate) return
+    setLoading(true)
     try {
-      setLoading(true)
-      const index = await onEvaluate()
-      setBestIndex(index)
-    } catch (e) {
-      console.error(e)
+      const idx = await onEvaluate()
+      setBestIndex(idx)
+    } catch (err) {
+      console.error(err)
     } finally {
       setLoading(false)
     }
@@ -61,13 +64,13 @@ export default function MediaUploader({
     }))
   }, [files])
 
-  const bestFile = filePreviews[bestIndex!]
-
   useEffect(() => {
     return () => {
       filePreviews.forEach(({ url }) => URL.revokeObjectURL(url))
     }
   }, [filePreviews])
+
+  const bestFile = filePreviews[bestIndex!]
 
   return (
     <div className="space-y-6">
@@ -83,10 +86,9 @@ export default function MediaUploader({
             accept="image/*,video/*"
             onChange={handleFileChange}
             disabled={files.length >= maxFileNum}
-            className="cursor-pointer"
           />
           <p className="text-sm text-muted-foreground mt-2">
-            {files.length} files uploaded (Upto {maxFileNum} allowed)
+            {files.length} files uploaded (up to {maxFileNum} allowed)
           </p>
         </CardContent>
       </Card>
@@ -125,15 +127,17 @@ export default function MediaUploader({
             })}
           </div>
 
-          <div className="flex justify-end">
-            <Button onClick={handleCheckBest} disabled={loading}>
-              {loading ? 'Evaluating...' : 'Check Best Choice'}
-            </Button>
+          <div className="flex justify-end gap-2">
+            {onEvaluate && (
+              <Button onClick={handleCheckBest} disabled={loading}>
+                {loading ? 'Evaluating...' : 'Check Best Choice'}
+              </Button>
+            )}
           </div>
         </>
       )}
 
-      {bestIndex !== null && (
+      {showBest && bestIndex !== null && (
         <Card className="mt-8 border-2 border-green-500 shadow-md">
           <CardHeader>
             <CardTitle className="text-green-600 text-xl">
