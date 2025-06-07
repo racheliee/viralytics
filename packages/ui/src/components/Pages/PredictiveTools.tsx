@@ -8,9 +8,10 @@ import { Button } from '@viralytics/components/ui/button'
 import { Separator } from '@viralytics/components/ui/separator'
 import { Textarea } from '@viralytics/components/ui/textarea'
 import { toast } from 'sonner'
-import ReactMarkdown from 'react-markdown'
+//import ReactMarkdown from 'react-markdown'
 import CountUp from 'react-countup'
 import { Loader2 } from 'lucide-react'
+import { Typewriter } from 'react-simple-typewriter'
 
 export default function PredictiveTools() {
   const [files, setFiles] = useState<File[]>([])
@@ -45,7 +46,7 @@ export default function PredictiveTools() {
         },
         body: JSON.stringify({
           fileNum: files.length,
-          date: selectedDate.toISOString().split('T')[0] // 'YYYY-MM-DD'
+          date: selectedDate.toISOString().split('T')[0]
         })
       })
 
@@ -98,7 +99,7 @@ export default function PredictiveTools() {
               </div>
             ) : (
               <>
-                <div className="min-h-[80px] mb-80">
+                <div className="min-h-[80px] mb-8">
                   {likes !== null ? (
                     <div className="text-start align-text-bottom flex flex-row items-end gap-4">
                       <div className="text-9xl font-bold text-green-800 dark:text-green-200">
@@ -112,14 +113,20 @@ export default function PredictiveTools() {
                     </div>
                   )}
                 </div>
-
                 {llmResponse && (
                   <div className="bg-gray-50 dark:bg-zinc-900 p-6 rounded-lg shadow-sm border border-border">
-                    <h4 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">
-                      LLM-Generated Report
+                    <h4 className="text-lg font-semibold mb-4 dark:text-gray-100">
+                      AI Instagram Post Performance Prediction Report
                     </h4>
                     <div className="prose prose-sm dark:prose-invert max-w-none leading-relaxed">
-                      <ReactMarkdown>{llmResponse}</ReactMarkdown>
+                      {/* <ReactMarkdown>{llmResponse}</ReactMarkdown> */}
+                      <Typewriter
+                        words={[llmResponse]}
+                        loop={1}
+                        typeSpeed={3}
+                        deleteSpeed={0}
+                        cursor
+                      />
                     </div>
                   </div>
                 )}
