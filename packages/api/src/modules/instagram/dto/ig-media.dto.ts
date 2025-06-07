@@ -1,4 +1,4 @@
-import { InstagramMediaResults } from 'src/modules/instagram/constants/types'
+import { InstagramMediaResults } from "@viralytics/shared-constants"
 
 export class IgMediaResponseDto {
   mediaInfo: InstagramMediaResults[]

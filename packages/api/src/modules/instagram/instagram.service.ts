@@ -6,6 +6,7 @@ import {
 import { ConfigService } from '@nestjs/config'
 import {
   GeneralBreakdownEnum,
+  InstagramMediaResults,
   MetricEnum,
   MetricTypeEnum,
   PeriodEnum
@@ -15,7 +16,6 @@ import {
   MEDIA_FIELDS,
   MEDIA_LIMIT
 } from 'src/modules/instagram/constants/limit'
-import { InstagramMediaResults } from 'src/modules/instagram/constants/types'
 import {
   DemographicsRequestDto,
   DemographicsResponseDto
