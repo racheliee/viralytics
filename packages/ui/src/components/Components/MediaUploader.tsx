@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { UploadCloud } from 'lucide-react'
 import Image from 'next/image'
 import {
@@ -11,17 +11,19 @@ import {
 } from '@viralytics/components/ui/card'
 import { Input } from '@viralytics/components/ui/input'
 import { Button } from '@viralytics/components/ui/button'
-
 interface MediaUploaderProps {
+  files: File[]
+  setFiles: React.Dispatch<React.SetStateAction<File[]>>
   onEvaluate: () => Promise<number>
   maxFileNum?: number
 }
 
 export default function MediaUploader({
+  files,
+  setFiles,
   onEvaluate,
-  maxFileNum = 5
+  maxFileNum = 20
 }: MediaUploaderProps) {
-  const [files, setFiles] = useState<File[]>([])
   const [bestIndex, setBestIndex] = useState<number | null>(null)
   const [loading, setLoading] = useState(false)
 
@@ -52,6 +54,21 @@ export default function MediaUploader({
     }
   }
 
+  const filePreviews = useMemo(() => {
+    return files.map((file) => ({
+      file,
+      url: URL.createObjectURL(file)
+    }))
+  }, [files])
+
+  const bestFile = filePreviews[bestIndex!]
+
+  useEffect(() => {
+    return () => {
+      filePreviews.forEach(({ url }) => URL.revokeObjectURL(url))
+    }
+  }, [filePreviews])
+
   return (
     <div className="space-y-6">
       <Card>
@@ -77,8 +94,7 @@ export default function MediaUploader({
       {files.length > 0 && (
         <>
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {files.map((file, idx) => {
-              const url = URL.createObjectURL(file)
+            {filePreviews.map(({ file, url }, idx) => {
               const isImage = file.type.startsWith('image')
               return (
                 <Card key={idx}>
@@ -127,7 +143,7 @@ export default function MediaUploader({
           <CardContent className="p-4 space-y-3">
             <div className="relative w-full h-[400px] rounded-md overflow-hidden">
               <Image
-                src={URL.createObjectURL(files[bestIndex])}
+                src={bestFile.url}
                 alt={`best-choice-${bestIndex}`}
                 fill
                 className="object-cover rounded-md"

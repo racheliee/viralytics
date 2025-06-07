@@ -6,6 +6,7 @@ import { ConfigService } from './config/config.service'
 import { InstagramService } from './modules/instagram/instagram.service'
 import { InstagramController } from './modules/instagram/instagram.controller'
 import { InstagramModule } from './modules/instagram/instagram.module'
+import { ModelModule } from './modules/model/model.module';
 
 @Module({
   imports: [
@@ -19,7 +20,8 @@ import { InstagramModule } from './modules/instagram/instagram.module'
       ]
     }),
     AuthModule,
-    InstagramModule
+    InstagramModule,
+    ModelModule
   ],
   controllers: [],
   providers: [AppService, ConfigService, InstagramService]
