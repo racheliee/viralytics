@@ -8,13 +8,6 @@ import LineChartBase, {
 import { ChartColors } from '@viralytics/components/Charts/types/Colours'
 import { ChartConfigBase } from '@viralytics/components/Charts/types/config'
 import { ChartContainer } from '@viralytics/components/ui/chart'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from '@viralytics/components/ui/select'
 import { endOfMonth, format, startOfMonth, subMonths } from 'date-fns'
 import { useEffect, useState } from 'react'
 
@@ -47,9 +40,6 @@ export default function MetricsLineChart() {
   const [breakdowns, setBreakdowns] = useState<
     Record<string, Record<string, LineChartBreakdown[]>>
   >({})
-  const [selectedMetric, setSelectedMetric] = useState<string>(
-    Object.keys(METRICS)[0] || ''
-  )
 
   useEffect(() => {
     const fetchMetricsData = async () => {
@@ -175,10 +165,6 @@ export default function MetricsLineChart() {
     fetchMetricsData()
   }, [])
 
-  const handleMetricChange = (value: string) => {
-    setSelectedMetric(value)
-  }
-
   // Format metric name for display
   const formatMetricName = (metric: string): string => {
     return METRICS[metric as keyof typeof METRICS]?.name || metric
@@ -187,66 +173,65 @@ export default function MetricsLineChart() {
   // Get available metrics from the data
   const availableMetrics = Object.keys(METRICS)
 
-  // Function to filter lines based on selected metric
-  const getChartLines = () => {
-    if (!selectedMetric || !METRICS[selectedMetric as keyof typeof METRICS]) {
+  // Function to get chart lines for a specific metric
+  const getChartLines = (metric: string) => {
+    if (!metric || !METRICS[metric as keyof typeof METRICS]) {
       return [] // Return empty array if no valid metric is selected
     }
-    // Show only the selected metric
+    // Show only the specified metric
     return [
       {
-        dataKey: selectedMetric,
-        name:
-          METRICS[selectedMetric as keyof typeof METRICS]?.name ||
-          selectedMetric,
-        color:
-          METRICS[selectedMetric as keyof typeof METRICS]?.color ||
-          ChartColors[1],
-        breakdowns: breakdowns[selectedMetric]
+        dataKey: metric,
+        name: METRICS[metric as keyof typeof METRICS]?.name || metric,
+        color: METRICS[metric as keyof typeof METRICS]?.color || ChartColors[1],
+        breakdowns: breakdowns[metric]
       }
     ]
   }
 
+  // Function to check if data exists for a specific metric
+  const hasDataForMetric = (metric: string) => {
+    return chartData.length > 0 && 
+      chartData.some((item) => typeof item[metric] === 'number')
+  }
+
+  // Render a single metric chart
+  const renderMetricChart = (metric: string) => {
+    return (
+      <ChartCardBase
+        key={metric}
+        loading={loading}
+        error={error}
+        title={formatMetricName(metric)}
+        description="Monthly data for the past 6 months"
+      >
+        {!hasDataForMetric(metric) ? (
+          <div className="h-[200px] flex items-center justify-center">
+            <p className="text-muted-foreground">
+              No data available for {formatMetricName(metric)}
+            </p>
+          </div>
+        ) : (
+          <ChartContainer config={ChartConfigBase}>
+            <LineChartBase
+              data={chartData}
+              lines={getChartLines(metric)}
+              width={600}
+              height={200}
+              yAxisFormatter={(value) => value.toLocaleString()}
+              tooltipFormatter={(value) => value.toLocaleString()}
+            />
+          </ChartContainer>
+        )}
+      </ChartCardBase>
+    )
+  }
+
   return (
-    <ChartCardBase
-      loading={loading}
-      error={error}
-      title="Engagement Metrics Over Time"
-      description="Monthly engagement metrics for the past 6 months. Hover over data points to see breakdowns by content type."
-      headerRight={
-        <Select value={selectedMetric} onValueChange={handleMetricChange}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Select metric" />
-          </SelectTrigger>
-          <SelectContent>
-            {availableMetrics.map((metric) => (
-              <SelectItem key={metric} value={metric}>
-                {formatMetricName(metric)}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      }
-    >
-      {!chartData.length ||
-      !chartData.some((item) => typeof item[selectedMetric] === 'number') ? (
-        <div className="h-[250px] flex items-center justify-center">
-          <p className="text-muted-foreground">
-            No data available for {formatMetricName(selectedMetric)}
-          </p>
-        </div>
-      ) : (
-        <ChartContainer config={ChartConfigBase}>
-          <LineChartBase
-            data={chartData}
-            lines={getChartLines()}
-            width={400}
-            height={200}
-            yAxisFormatter={(value) => value.toLocaleString()}
-            tooltipFormatter={(value) => value.toLocaleString()}
-          />
-        </ChartContainer>
-      )}
-    </ChartCardBase>
+    <div className="space-y-6 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {availableMetrics.map(renderMetricChart)}
+      </div>
+    </div>
   )
 }

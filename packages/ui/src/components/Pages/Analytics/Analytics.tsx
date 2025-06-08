@@ -1,14 +1,13 @@
 'use client'
 
-import React from 'react'
 import DashboardWrapper from '@viralytics/components/DashboardWrapper'
+import MetricsLineChart from '@viralytics/components/Pages/Analytics/MetricsLineChart'
+import DemographicsBar from '@viralytics/components/Pages/Followers/stats/DemographicsBar'
+import DemographicsPie from '@viralytics/components/Pages/Followers/stats/DemographicsPie'
 import {
   DemographicBreakdownEnum,
   TimeframeEnum
 } from '@viralytics/shared-constants'
-import DemographicsPie from '@viralytics/components/Pages/Followers/stats/DemographicsPie'
-import DemographicsBar from '@viralytics/components/Pages/Followers/stats/DemographicsBar'
-import MetricsLineChart from '@viralytics/components/Pages/Analytics/MetricsLineChart'
 
 export default function Analytics() {
   return (
