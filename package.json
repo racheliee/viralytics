@@ -16,7 +16,13 @@
     "prettier:fix": "yarn workspace @viralytics/api prettier:fix && yarn workspace @viralytics/ui prettier:fix && yarn workspace @viralytics/shared-constants prettier:fix"
   },
   "devDependencies": {
+    "@types/validator": "^13",
     "prettier": "^3.5.3"
   },
-  "packageManager": "yarn@4.9.1"
+  "packageManager": "yarn@4.9.1",
+  "dependencies": {
+    "brace-expansion": "^4.0.1",
+    "next": "^16.0.7",
+    "validator": "^13.15.23"
+  }
 }
